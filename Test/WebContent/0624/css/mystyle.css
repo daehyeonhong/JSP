@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+#header {
+	background: #eee;
+	padding: 20px;
+}
+
+#header .logo {
+	float: left;
+}
+
+#content {
+	position: relative;
+	height: auto;
+}
+
+#content img {
+	width: 100%;
+}
+
+#footer {
+	background: #000;
+	height: 50px;
+	text-align: center;
+	padding: 20px;
+}
+
+#footer {
+	color: #fff;
+}
+
+#mainContent {
+	float: right;
+	width: 75%;
+	height: auto;
+	position: relative;
+}
+
+#nav {
+	float: left;
+	width: 20%;
+	height: 100%;
+	background: #ee8;
+	position: absolute;
+}
+
+#firstContent {
+	float: left;
+	width: 70%;
+}
+
+#secondContent {
+	float: right;
+	width: 25%;
+	padding: 1%;
+	background: #e8e;
+}

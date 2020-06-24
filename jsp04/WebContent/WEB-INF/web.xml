@@ -14,7 +14,7 @@
 	</welcome-file-list>
 	<jsp-config>
 		<jsp-property-group>
-			<url-pattern>*.jsp</url-pattern>
+			<url-pattern>/view/*</url-pattern>
 			<include-prelude>/common/variable.jspf</include-prelude>
 			<include-coda>/common/footer.jspf</include-coda>
 		</jsp-property-group>

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>asd</h1>
+	<jsp:useBean id="date" class="java.util.Date" />
+	<%=date%><br />
 </body>
 </html>

@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>asd</h1>
+	<!-- useBean을 객체 생성, scope=page - default -->
+	<jsp:useBean id="bean" class="dto.Calculator" />
+	<%
+		int m = bean.process(5);
+	out.print("5^3= " + m);
+	%><br />
 </body>
 </html>
