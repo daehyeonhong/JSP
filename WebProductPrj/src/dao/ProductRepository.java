@@ -44,4 +44,14 @@ public class ProductRepository {
 	public List<Product> getListOfProducts() {
 		return listOfProducts;
 	}
+
+	public Product getProductById(String id) {
+		for (int i = 0; i < listOfProducts.size(); i++) {
+			Product product = listOfProducts.get(i);
+			if (product.getProductId().equals(id)) {
+				return product;
+			}
+		}
+		return null;
+	}
 }
