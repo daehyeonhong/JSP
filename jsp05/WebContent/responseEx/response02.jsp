@@ -12,7 +12,7 @@
 <body>
 	<span>이 페이지는 5초마다 새로고침 됩니다.</span>
 	<%
-		response.setIntHeader("Refresh", 2);
+		response.setIntHeader("Refresh", 5);
 	%>
 	<p><%=new Date()%></p>
 
