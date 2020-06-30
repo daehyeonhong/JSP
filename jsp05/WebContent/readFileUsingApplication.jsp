@@ -12,8 +12,8 @@
 		/* c:\\jspworkspace\\jsp05\\notice\\notice.txt */
 	String resourcePath = "/notice/notice.txt";
 	%>
-	<span>자원의 실제 경로:<br /></span>
-	<%=application.getRealPath(resourcePath)%>
+	<span>자원의 실제 경로: <%=application.getRealPath(resourcePath)%></span>
+	<br />
 	<!-- C:\WorkSpace\JSP\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\jsp05\notice\notice.txt -->
 	<br /> ────────────────────────
 	<br />
