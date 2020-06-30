@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <title>회원가입</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -192,7 +191,6 @@ a {
 	}
 </script>
 </head>
-
 <body>
 	<div id="wrap">
 		<div id="header">
@@ -202,10 +200,8 @@ a {
 			<div class="clear"></div>
 		</div>
 		<div id="content">
-
 			<form id="loginForm" method="post" action="memberPro.jsp">
 				<h3>회원가입 신청</h3>
-
 				<fieldset>
 					<legend>필수입력</legend>
 					<p>
@@ -213,23 +209,19 @@ a {
 							placeholder="ID" /> <input type="button" id="idCheck"
 							name="idCheck" value="중복검사" onclick="check()" required="required" />
 					</p>
-
 					<p>
 						<label>비밀번호</label> <input name="pw" id="pw" type="password"
 							placeholder="Password" required="required" />
 					</p>
-
 					<p>
 						<label>비밀번호 확인</label> <input name="pwconfirm" id="pwconfirm"
 							type="password" placeholder="Check" required="required" />
 					</p>
-
 					<p>
 						<label>이름</label> <input name="myname" id="myname" type="text"
 							placeholder="Name" required="required" />
 					</p>
 				</fieldset>
-
 				<fieldset>
 					<legend>선택정보 입력</legend>
 					<p>
@@ -251,9 +243,9 @@ a {
 							value="no"> <label for="radio-w">여</label>
 					</p>
 					<p>
-						<label>취미</label> <input type="checkbox" name="hobby" value="독서"><a>독서</a>
-						<input type="checkbox" name="hobby" value="운동"><a>운동 </a>
-						<a><input type="checkbox" name="hobby" value="영화감상">영화감상</a>
+						<label>취미</label> <input type="checkbox" name="hobbies" value="독서"><a>독서</a>
+						<input type="checkbox" name="hobbies" value="운동"><a>운동
+						</a> <input type="checkbox" name="hobbies" value="영화감상"><a>영화감상</a>
 					</p>
 				</fieldset>
 				<fieldset>
@@ -266,7 +258,6 @@ a {
 						type="radio" class="radio" id="radio-no" name="isok" value="no">
 					<label for="radio-w">아니오</label>
 				</p>
-
 				<p>
 					<input type="submit" value="전송" onclick="return pwdCheck()">
 					<input type="reset" value="취소">
@@ -278,5 +269,4 @@ a {
 		</div>
 	</div>
 </body>
-
 </html>
