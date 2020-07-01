@@ -26,7 +26,7 @@
 	</div>
 
 	<%
-		DecimalFormat df = new DecimalFormat("0,000,000￦");
+		DecimalFormat df = new DecimalFormat("\u00A4 #,###");
 	String id = request.getParameter("id");
 	ProductRepository dao = (ProductRepository) session.getAttribute("productDAO");
 	Product product = dao.getProductById(id);
@@ -52,9 +52,7 @@
 					<b>재고</b>:<%=product.getUnitsInStock()%>
 				</p>
 				<h4>
-					<%
-						String price = df.format(product.getUnitPrice());
-					%>
+					<%=df.format(product.getUnitPrice())%>
 				</h4>
 				<p>
 					<a href="#" class="btn btn-info" onclick="addToCart()">상품

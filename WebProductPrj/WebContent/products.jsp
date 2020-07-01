@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="dto.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -21,6 +22,7 @@
 	</div>
 	<%
 		List<Product> list = productDAO.getListOfProducts();
+	DecimalFormat df = new DecimalFormat("\u00A4 #,###");
 	%>
 	<div class="container">
 		<div class="row" align="center">
@@ -31,7 +33,7 @@
 			<div class="col-md-4">
 				<h3><%=p.getPname()%></h3>
 				<p><%=p.getDescription()%></p>
-				<p><%=p.getUnitPrice()%></p>
+				<p><%=df.format(p.getUnitPrice())%></p>
 				<p>
 					<a href="product.jsp?id=<%=p.getProductId()%>"
 						class="btn btn-secondary" role="button">상세정보 &raquo;</a>
