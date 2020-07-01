@@ -17,7 +17,7 @@ public class BookInfo2 extends GoodInfo implements Serializable {
 		this.page = page;
 	}
 
-	// 파일저장시 자동 호출
+	/* 파일저장시 자동 호출 */
 	private void writeObject(ObjectOutputStream oos) throws IOException {
 		oos.writeUTF(code);
 		oos.writeInt(price);

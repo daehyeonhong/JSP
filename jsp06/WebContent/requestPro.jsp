@@ -11,7 +11,8 @@
 		String id = request.getParameter("id");
 	String pwd = request.getParameter("pwd");
 	%>
-	아이디: <%=id%><br />
-	비밀번호: <%=pwd%>
+	아이디:
+	<%=id%><br /> 비밀번호:
+	<%=pwd%>
 </body>
 </html>

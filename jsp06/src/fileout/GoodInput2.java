@@ -8,6 +8,7 @@ public class GoodInput2 {
 		ObjectInputStream ois = null;
 		try {
 			ois = new ObjectInputStream(new FileInputStream("k4.txt"));
+
 			while (true) {
 				BookInfo2 b = (BookInfo2) ois.readObject();
 				System.out.println(b.code);
