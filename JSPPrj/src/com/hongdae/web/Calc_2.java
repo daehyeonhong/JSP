@@ -20,7 +20,7 @@ public class Calc_2 extends HttpServlet {
 		ServletContext application = request.getServletContext();
 
 		String x_ = request.getParameter("x"), y_ = request.getParameter("y"), op_ = request.getParameter("operator");
-		int x = 0, y = 0;
+		int x = 0, y = 0, v = 0, result = 0;
 		if (!x_.equals("")) {
 			x = Integer.parseInt(x_);
 		}
@@ -29,7 +29,6 @@ public class Calc_2 extends HttpServlet {
 		}
 		if (op_.equals("=")) {
 			x = y = v;
-			int result = 0;
 			if (op_.equals("덧셈")) {
 				result = x + y;
 			} else {
@@ -41,6 +40,6 @@ public class Calc_2 extends HttpServlet {
 
 		response.getWriter().printf("result is %d\n", result);
 		application.setAttribute("value", v);
-		application.setAttribute("op", op);
+		application.setAttribute("op", op_);
 	}
 }

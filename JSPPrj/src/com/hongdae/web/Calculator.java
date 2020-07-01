@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/calculator")
 public class Calculator extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("doGET Method가 호출 되었습니다.");
