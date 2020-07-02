@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var x, y, input;
+		input = prompt("첫번째 숫자> ", "숫자를 입력하세요.");
+
+		/* 숫자형 문자를 숫자로 변환하는 함수 parseInt(); */
+		x = parseInt(input);
+		input = prompt("두번째 숫자> ", "숫자를 입력하세요.");
+		y = parseInt(input);
+		document.write("<h3>결과: " + (x + y) + "</h3>")
+
+		/* 브라우저의 console에 로그로 기록하기 console.lig(값1, 값2, 값3,...); */
+		console.log("결과: ", x, y, x + y, (x + y), "hello");
+	</script>
+</body>
+</html>

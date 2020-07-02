@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>prompt()함수</title>
+</head>
+<script type="text/javascript">
+	function printResult() {
+		var x = document.getElementById("x").value;
+		var y = document.getElementById("y").value;
+		document.getElementById("result").value = parseInt(x) + parseInt(y);
+	}
+</script>
+<body>
+	<form action="#">
+		<p>
+			첫번째 숫자: <input type="text" id="x" name="x">
+		</p>
+		<p>
+			두번째 숫자: <input type="text" id="y" name="y">
+		</p>
+		<p>
+			결과: <input type="text" id="result">
+		</p>
+		<button onclick="printResult()">결과 출력</button>
+	</form>
+
+	<script type="text/javascript">
+		var x = prompt("첫번째 숫자를 입력하세요", "숫자로 입력");
+		var y = prompt("두번째 숫자를 입력하세요", "숫자로 입력");
+		document.getElementById("x").value = x;
+		document.getElementById("y").value = y;
+	</script>
+</body>
+</html>
