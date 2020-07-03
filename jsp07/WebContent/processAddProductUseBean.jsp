@@ -52,20 +52,29 @@
 	Enumeration files = multi.getFileNames();
 	String fname = (String) files.nextElement();
 	String fileName = multi.getFilesystemName(fname);
-
-	product.setProductId(productId);
-	product.setPname(pname);
-	product.setUnitPrice(price);
-	product.setDescription(description);
-	product.setManufacturer(manufacturer);
-	product.setCategory(category);
-	product.setUnitsInStock(stock);
-	product.setCondition(condition);
-	product.setFilename(fileName);
-
-	productDAO.addProduct(product);
-	response.sendRedirect("products.jsp");
 	%>
 
+	<jsp:setProperty property="productId" name="product"
+		value="<%=productId%>" />
+	<jsp:setProperty property="pname" name="product" value="<%=pname%>" />
+	<jsp:setProperty property="unitPrice" name="product"
+		value="<%=Integer.parseInt(unitPrice)%>" />
+	<jsp:setProperty property="description" name="product"
+		value="<%=description%>" />
+	<jsp:setProperty property="manufacturer" name="product"
+		value="<%=manufacturer%>" />
+	<jsp:setProperty property="category" name="product"
+		value="<%=category%>" />
+	<jsp:setProperty property="unitsInStock" name="product"
+		value="<%=Long.parseLong(unitsInStock)%>" />
+	<jsp:setProperty property="condition" name="product"
+		value="<%=condition%>" />
+	<jsp:setProperty property="filename" name="product"
+		value="<%=fileName%>" />
+
+	<%
+		productDAO.addProduct(product);
+	response.sendRedirect("./products.jsp");
+	%>
 </body>
 </html>
