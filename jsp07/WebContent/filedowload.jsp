@@ -14,30 +14,30 @@
 <body>
 	<%
 		request.setCharacterEncoding("UTF-8");
-	/* 파일 업로드된 경로 */
-	String root = getServletContext().getRealPath("/");
-	out.print("경로: " + root + "<br />");
+			/* 파일 업로드된 경로 */
+			String root = getServletContext().getRealPath("/");
+			out.print("경로: " + root + "<br />");
 
-	String savePath = root + "upload";
+			String savePath = root + "upload";
 
-	/* 서버에 실제 저장된 파일 명 */
-	String fileName = "20200702.jar";
+			/* 서버에 실제 저장된 파일 명 */
+			String fileName = "20200702.jar";
 
-	/* 실제 내보낼 파일 명 */
-	String orgFileName = "테스트.jar";
+			/* 실제 내보낼 파일 명 */
+			String orgFileName = "테스트.jar";
 
-	out.print("경로: " + savePath + "<br />");
+			out.print("경로: " + savePath + "<br />");
 
-	/* download에 사용 할 변수 선언 */
-	/* 입력 스트림 */
-	InputStream in = null;
-	/* 출력 스트림 */
-	OutputStream os = null;
-	/* download할 파일 정보 */
-	File file = null;
-	boolean skip = false;
-	String client = "";
-	try {
+			/* download에 사용 할 변수 선언 */
+			/* 입력 스트림 */
+			InputStream in = null;
+			/* 출력 스트림 */
+			OutputStream os = null;
+			/* download할 파일 정보 */
+			File file = null;
+			boolean skip = false;
+			String client = "";
+			try {
 		try {/* 파일을 읽어 스트림에 담기 */
 			/* File(경로, 파일 명); */
 			file = new File(savePath, fileName);
@@ -60,17 +60,18 @@
 			/* IE */
 			if (client.indexOf("MSIE") != -1) {
 		response.setHeader("Content-Disposition",
-				"attachment; filename=" + new String(orgFileName.getBytes("KSC5601"), "ISO8859_1"));
+		"attachment; filename=" + new String(orgFileName.getBytes("KSC5601"), "ISO8859_1"));
 			} else {
-		//한글 파일명 처리
-		orgFileName = new String(orgFileName.getBytes("UTF-8"), "ISO-8859-1");
+		/* 한글 파일명 처리 */
+		orgFileName = new String(orgFileName.getBytes("EUC-KR"), "ISO-8859-1");
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + orgFileName + "\"");
 		response.setHeader("Content-Type", "application/octet-stream; charset=UTF-8");
 			}
 			response.setHeader("Content-Length", "" + file.length());
 
 			out.clear();/* buffer 삭제 */
-			pageContext.pushBody(); /* body부분 밀어내기 */
+			/* pageContext.pushBody();값을 out객체에 대입 */
+			out = pageContext.pushBody(); /* body부분 밀어내기 */
 
 			os = response.getOutputStream();/* out객체 다시 호출 */
 			byte[] b = new byte[(int) file.length()];
