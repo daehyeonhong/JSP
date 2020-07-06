@@ -12,7 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="product" class="dto.Product" />
 	<%
 		request.setCharacterEncoding("UTF-8");
 	String filename = "";
@@ -64,6 +63,20 @@
 
 	productDAO.addProduct(product);
 	response.sendRedirect("products.jsp");
+	%>
+	<jsp:useBean id="product" class="dto.Product" />
+	<jsp:setProperty property="*" name="product" />
+	<%-- <jsp:getProperty property="productId" name="product" />
+	<jsp:getProperty property="pname" name="product" />
+	<jsp:getProperty property="unitPrice" name="product" />
+	<jsp:getProperty property="description" name="product" />
+	<jsp:getProperty property="manufacturer" name="product" />
+	<jsp:getProperty property="category" name="product" />
+	<jsp:getProperty property="unitsInStock" name="product" />
+	<jsp:getProperty property="condition" name="product" /> --%>
+	<%
+		productDAO.addProduct(product);
+	response.sendRedirect("./products.jsp");
 	%>
 </body>
 </html>
