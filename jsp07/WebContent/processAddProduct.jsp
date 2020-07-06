@@ -18,11 +18,11 @@
 	<%
 		request.setCharacterEncoding("UTF-8");
 	String filename = "";
-	String realFoler = "/resources/images";
+	String realFolder = "/resources/images";
 	int maxSize = 5 * 1024 * 1024;
 	String encType = "UTF-8";
 
-	MultipartRequest multi = new MultipartRequest(request, getServletContext().getRealPath(realFoler), maxSize, encType,
+	MultipartRequest multi = new MultipartRequest(request, getServletContext().getRealPath(realFolder), maxSize, encType,
 			new DefaultFileRenamePolicy());
 
 	String productId = multi.getParameter("productId");
