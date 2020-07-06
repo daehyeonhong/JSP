@@ -14,16 +14,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:useBean id="product" class="dto.Product" />
 	<%
 		request.setCharacterEncoding("UTF-8");
 	String filename = "";
-	String realFolder = "/resources/images";
+	String realFolder = "/resources/iamges";
 	int maxSize = 5 * 1024 * 1024;
 	String encType = "UTF-8";
 
-	MultipartRequest multi = new MultipartRequest(request, getServletContext().getRealPath(realFolder), maxSize,
+	MultipartRequest multi = new MultipartRequest(request, getServletContext().getRealPath(realFolder), maxSize, encType,
 			new DefaultFileRenamePolicy());
-
 	String productId = multi.getParameter("productId");
 	String pname = multi.getParameter("pname");
 	String unitPrice = multi.getParameter("unitPrice");
@@ -48,33 +48,37 @@
 	} else {
 		stock = Long.valueOf(unitsInStock);
 	}
-
 	Enumeration files = multi.getFileNames();
 	String fname = (String) files.nextElement();
-
-	product.setProductId(productId);
-	product.setPname(pname);
-	product.setUnitPrice(price);
-	product.setDescription(description);
-	product.setManufacturer(manufacturer);
-	product.setCategory(category);
-	product.setUnitsInStock(stock);
-	product.setCondition(condition);
-	product.setFileName(filename);
-
-	productDAO.addProduct(product);
-	response.sendRedirect("products.jsp");
+	String fileNmae = multi.getFilesystemName(fname);
 	%>
-	<jsp:useBean id="product" class="dto.Product" />
-	<jsp:setProperty property="*" name="product" />
-	<%-- <jsp:getProperty property="productId" name="product" />
-	<jsp:getProperty property="pname" name="product" />
-	<jsp:getProperty property="unitPrice" name="product" />
-	<jsp:getProperty property="description" name="product" />
-	<jsp:getProperty property="manufacturer" name="product" />
-	<jsp:getProperty property="category" name="product" />
-	<jsp:getProperty property="unitsInStock" name="product" />
-	<jsp:getProperty property="condition" name="product" /> --%>
+
+	<jsp:setProperty property="productId" name="product"
+		value="<%=productId%>"
+	/>
+	<jsp:setProperty property="pname" name="product" value="<%=pname%>" />
+	<jsp:setProperty property="unitPrice" name="product"
+		value="<%=Integer.parseInt(unitPrice)%>"
+	/>
+	<jsp:setProperty property="description" name="product"
+		value="<%=description%>"
+	/>
+	<jsp:setProperty property="manufacturer" name="product"
+		value="<%=manufacturer%>"
+	/>
+	<jsp:setProperty property="category" name=" product"
+		value="<%=category%>"
+	/>
+	<jsp:setProperty property="unitsInStock" name="product"
+		value="<%=Long.parseLong(unitsInStock)%>"
+	/>
+	<jsp:setProperty property="condition" name="product"
+		value="<%=condition%>"
+	/>
+	<jsp:setProperty property="filename" name="product"
+		value="<%=fileNmae%>"
+	/>
+
 	<%
 		productDAO.addProduct(product);
 	response.sendRedirect("./products.jsp");
