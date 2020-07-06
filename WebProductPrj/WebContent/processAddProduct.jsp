@@ -15,7 +15,7 @@
 	<jsp:useBean id="product" class="dto.Product" />
 	<%
 		request.setCharacterEncoding("UTF-8");
-	String fileName = "";
+	String filename = "";
 	String realFolder = "/resources/images";
 	int maxSize = 5 * 1024 * 1024;
 	String encType = "UTF-8";
@@ -49,8 +49,8 @@
 	}
 
 	Enumeration files = multi.getFileNames();
-	String fName = (String) files.nextElement();
-	fileName = multi.getFilesystemName(fName);
+	String fname = (String) files.nextElement();
+	String fileName = multi.getFilesystemName(fname);
 
 	product.setProductId(productId);
 	product.setPname(pname);
