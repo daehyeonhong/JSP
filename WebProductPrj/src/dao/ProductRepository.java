@@ -15,7 +15,7 @@ public class ProductRepository {
 
 	// 초기화
 	public ProductRepository() {
-		inputFile();
+		/* inputFile(); */
 		if (listOfProducts.size() == 0) {
 			Product phone = new Product("P1234", "iPhone 6s", 800000);
 			phone.setDescription("4.7-inch, 1334x750 Retina HD display, 8-megapixel iSight Camera");
@@ -23,6 +23,7 @@ public class ProductRepository {
 			phone.setManufacturer("Apple");
 			phone.setUnitsInStock(1000);
 			phone.setCondition("New");
+			phone.setFileName("P1234.png");
 
 			Product notebook = new Product("P1235", "LG PC Gram", 1500000);
 			notebook.setDescription("13.3-inch, IPS LED display, 5rd Generation Intel Core process");
@@ -30,6 +31,7 @@ public class ProductRepository {
 			notebook.setManufacturer("LG");
 			notebook.setUnitsInStock(1000);
 			notebook.setCondition("Refurbishied");
+			notebook.setFileName("P1235.png");
 
 			Product tablet = new Product("P1236", "Galaxy tab S", 900000);
 			tablet.setDescription("212.8*125.6*6.6mm,Super AMOLED display, Octa-Core process");
@@ -37,6 +39,7 @@ public class ProductRepository {
 			tablet.setManufacturer("Samsung");
 			tablet.setUnitsInStock(1000);
 			tablet.setCondition("Old");
+			tablet.setFileName("P1236.png");
 
 			listOfProducts.add(phone);
 			listOfProducts.add(notebook);

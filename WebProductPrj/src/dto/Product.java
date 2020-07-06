@@ -14,6 +14,7 @@ public class Product implements Serializable {
 	private String category;// 분류
 	private long unitsInStock;// 재고
 	private String condition;// 상태
+	private String fileName; /* image 경로 */
 
 	// defaultConstructor
 	public Product() {
@@ -90,6 +91,14 @@ public class Product implements Serializable {
 
 	public void setCondition(String condition) {
 		this.condition = condition;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 }
