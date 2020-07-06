@@ -15,7 +15,7 @@ public class ProductRepository {
 
 	// 초기화
 	public ProductRepository() {
-		inputFile();
+		/* inputFile(); */
 		if (listOfProducts.size() == 0) {
 			Product phone = new Product("P1234", "iPhone 6s", 800000);
 			phone.setDescription("4.7-inch, 1334x750 Retina HD display, 8-megapixel iSight Camera");

@@ -30,13 +30,14 @@
 			<%
 				for (int i = 0; i < list.size(); i++) {
 				Product p = list.get(i);
+				String price = df.format(p.getUnitPrice());
 			%>
 			<div class="col-md-4">
 				<img alt="" src="./resources/images/<%=p.getFilename()%>"
 					style="width: 100%">
 				<h3><%=p.getPname()%></h3>
-				<%-- <p><%=p.getDescription()%></p> --%>
-				<p><%=df.format(p.getUnitPrice())%></p>
+				<p><%=p.getDescription()%></p>
+				<p><%=price%></p>
 				<p>
 					<a href="product.jsp?id=<%=p.getProductId()%>"
 						class="btn btn-secondary" role="button">상세정보 &raquo;</a>
