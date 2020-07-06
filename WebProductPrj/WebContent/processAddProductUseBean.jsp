@@ -1,12 +1,7 @@
-<%@page import="java.util.Enumeration"%>
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-%>
+	pageEncoding="UTF-8"%>
 <jsp:useBean id="productDAO" class="dao.ProductRepository"
-	scope="session"
-/>
+	scope="session" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,71 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="product" class="dto.Product" />
 	<%
 		request.setCharacterEncoding("UTF-8");
-	String filename = "";
-	String realFolder = "/resources/iamges";
-	int maxSize = 5 * 1024 * 1024;
-	String encType = "UTF-8";
-
-	MultipartRequest multi = new MultipartRequest(request, getServletContext().getRealPath(realFolder), maxSize, encType,
-			new DefaultFileRenamePolicy());
-	String productId = multi.getParameter("productId");
-	String pname = multi.getParameter("pname");
-	String unitPrice = multi.getParameter("unitPrice");
-	String description = multi.getParameter("description");
-	String manufacturer = multi.getParameter("manufacturer");
-	String category = multi.getParameter("category");
-	String unitsInStock = multi.getParameter("unitInStock");
-	String condition = multi.getParameter("condition");
-
-	Integer price;
-
-	if (unitPrice.isEmpty()) {
-		price = 0;
-	} else {
-		price = Integer.valueOf(unitPrice);
-	}
-
-	long stock;
-
-	if (unitsInStock.isEmpty()) {
-		stock = 0;
-	} else {
-		stock = Long.valueOf(unitsInStock);
-	}
-	Enumeration files = multi.getFileNames();
-	String fname = (String) files.nextElement();
-	String fileNmae = multi.getFilesystemName(fname);
 	%>
-
-	<jsp:setProperty property="productId" name="product"
-		value="<%=productId%>"
-	/>
-	<jsp:setProperty property="pname" name="product" value="<%=pname%>" />
-	<jsp:setProperty property="unitPrice" name="product"
-		value="<%=Integer.parseInt(unitPrice)%>"
-	/>
-	<jsp:setProperty property="description" name="product"
-		value="<%=description%>"
-	/>
-	<jsp:setProperty property="manufacturer" name="product"
-		value="<%=manufacturer%>"
-	/>
-	<jsp:setProperty property="category" name=" product"
-		value="<%=category%>"
-	/>
-	<jsp:setProperty property="unitsInStock" name="product"
-		value="<%=Long.parseLong(unitsInStock)%>"
-	/>
-	<jsp:setProperty property="condition" name="product"
-		value="<%=condition%>"
-	/>
-	<jsp:setProperty property="filename" name="product"
-		value="<%=fileNmae%>"
-	/>
-
+	<jsp:useBean id="product" class="dto.Product" />
+	<jsp:setProperty property="*" name="product" />
+	<%-- <jsp:getProperty property="productId" name="product" />
+	<jsp:getProperty property="pname" name="product" />
+	<jsp:getProperty property="unitPrice" name="product" />
+	<jsp:getProperty property="description" name="product" />
+	<jsp:getProperty property="manufacturer" name="product" />
+	<jsp:getProperty property="category" name="product" />
+	<jsp:getProperty property="unitsInStock" name="product" />
+	<jsp:getProperty property="condition" name="product" /> --%>
 	<%
 		productDAO.addProduct(product);
 	response.sendRedirect("./products.jsp");
