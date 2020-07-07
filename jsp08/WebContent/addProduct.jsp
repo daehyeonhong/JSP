@@ -5,6 +5,7 @@
 <jsp:useBean id="productDAO" class="dao.ProductRepository"
 	scope="session"
 />
+<!-- ch08 -->
 <%
 	String pid = productDAO.getProductSeq();
 List<String> cateList = productDAO.getCategories();

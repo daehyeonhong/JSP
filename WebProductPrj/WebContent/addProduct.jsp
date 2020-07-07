@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<jsp:useBean id="prodcutDAO" class="dao.ProductRepository"
-	scope="session" />
+	pageEncoding="UTF-8"
+%>
+<jsp:useBean id="productDAO" class="dao.ProductRepository"
+	scope="session"
+/>
+<!-- WebProductPrj -->
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>상품 등록</title>
-<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<script src="./resources/js/validation.js"></script>
 </head>
 <body>
 	<jsp:include page="menu.jsp" />
@@ -18,7 +22,8 @@
 	</div>
 	<div class="container">
 		<form name="newProduct" action="./processAddProduct.jsp"
-			class="form-horizontal" method="post" enctype="multipart/form-data">
+			class="form-horizontal" method="post" enctype="multipart/form-data"
+		>
 			<div class="form-group row">
 				<label class="col-sm-2">상품 코드</label>
 				<div class="col-sm-3">
@@ -41,7 +46,8 @@
 				<label class="col-sm-2">상세 정보</label>
 				<div class="col-sm-5">
 					<textarea rows="2" cols="50" name="description"
-						class="form-control"></textarea>
+						class="form-control"
+					></textarea>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -66,13 +72,14 @@
 				<label class="col-sm-2">상태</label>
 				<div class="col-sm-5">
 					<input type="radio" name="condition" value="New">신규 제품 <input
-						type="radio" name="condition" value="Old">중고 제품 <input
-						type="radio" name="condition" value="Refurbished">재생 제품
+						type="radio" name="condition" value="Old"
+					>중고 제품 <input type="radio" name="condition" value="Refurbished">재생
+					제품
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="cols-sm-2">이미지</label>
-				<div class="cols-sm5">
+				<div class="col-sm5">
 					<input type="file" name="fileName" class="form-control">
 				</div>
 			</div>
