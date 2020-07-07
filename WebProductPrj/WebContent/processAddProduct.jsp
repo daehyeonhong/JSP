@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
->>>>>>> 1845198b5fa81030057cc011220524a681bb7100
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="productDAO" class="dao.ProductRepository"
@@ -15,24 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:useBean id="product" class="dto.Product" />
 	<%
 		request.setCharacterEncoding("UTF-8");
-<<<<<<< HEAD
-	%>
-	<jsp:useBean id="product" class="dto.Product" />
-	<jsp:setProperty property="*" name="product" />
-	<%-- <jsp:getProperty property="productId" name="product" />
-	<jsp:getProperty property="pname" name="product" />
-	<jsp:getProperty property="unitPrice" name="product" />
-	<jsp:getProperty property="description" name="product" />
-	<jsp:getProperty property="manufacturer" name="product" />
-	<jsp:getProperty property="category" name="product" />
-	<jsp:getProperty property="unitsInStock" name="product" />
-	<jsp:getProperty property="condition" name="product" /> --%>
-	<%
-		productDAO.addProduct(product);
-	response.sendRedirect("./products.jsp");
-=======
 	String filename = "";
 	String realFolder = "/resources/images";
 	int maxSize = 5 * 1024 * 1024;
@@ -82,7 +64,6 @@
 
 	productDAO.addProduct(product);
 	response.sendRedirect("products.jsp");
->>>>>>> 1845198b5fa81030057cc011220524a681bb7100
 	%>
 
 	<%-- <jsp:getProperty property="productId" name="product" />
