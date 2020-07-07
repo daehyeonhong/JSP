@@ -3,6 +3,9 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <jsp:useBean id="productDAO" class="dao.ProductRepository"
 	scope="session" />
 <!DOCTYPE html>
@@ -14,8 +17,7 @@
 <body>
 	<jsp:useBean id="product" class="dto.Product" />
 	<%
-		request.setCharacterEncoding("UTF-8");
-	String filename = "";
+		String filename = "";
 	String realFolder = "/resources/images";
 	int maxSize = 5 * 1024 * 1024;
 	String encType = "UTF-8";
@@ -31,6 +33,7 @@
 	String category = multi.getParameter("category");
 	String unitsInStock = multi.getParameter("unitsInStock");
 	String condition = multi.getParameter("condition");
+	System.out.println(pname);
 	%>
 	<%
 		int price;
