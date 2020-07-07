@@ -4,7 +4,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 
 import dto.Product;
@@ -90,5 +95,28 @@ public class ProductRepository {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+	public String getProductSeq() {
+		String seq = listOfProducts.get(listOfProducts.size() - 1).getProductId().substring(1);/* P1234 -> 1234 */
+		int iSeq = Integer.parseInt(seq) + 1;
+		return "P" + iSeq;
+	}
+
+	public List<String> getCategories() {
+		/* 카테고리 정보를 중복되지 않게 저장하기 위해 set에 저장 */
+		Set<String> set = new HashSet<String>();
+		for (Product p : listOfProducts) {
+			set.add(p.getCategory());
+		}
+		System.out.println(set);
+
+		/* set에 저장된 카테고리 정보 list에 저장 */
+		Iterator<String> itor = set.iterator();
+		List<String> list = new ArrayList<String>();
+		while (itor.hasNext()) {
+			list.add(itor.next());
+		}
+		return list;
 	}
 }

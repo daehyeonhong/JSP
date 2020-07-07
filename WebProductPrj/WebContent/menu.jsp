@@ -5,6 +5,7 @@
 		<div class="navbar-header">
 			<a class="navbar-brand" href="./welcome.jsp">Home</a> <a
 				class="navbar-brand" href="./products.jsp">상품 목록</a> <a
+				class="navbar-brand" href="./addProduct.jsp">상품 등록</a> <a
 				class="navbar-brand" href="./boards.jsp">게시글 목록</a>
 		</div>
 	</div>
