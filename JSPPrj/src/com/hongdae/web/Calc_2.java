@@ -15,27 +15,30 @@ public class Calc_2 extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 		ServletContext application = request.getServletContext();
 
-		String x_ = request.getParameter("x"), y_ = request.getParameter("y"), op_ = request.getParameter("operator");
-		int x = 0, y = 0, v = 0, result = 0;
-		if (!x_.equals("")) {
-			x = Integer.parseInt(x_);
-		}
-		if (!y_.equals("")) {
-			y = Integer.parseInt(y_);
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+
+		String v_ = request.getParameter("v"), op_ = request.getParameter("operator");
+		int v = 0, result = 0;
+
+		if (!v_.equals("")) {
+			v = Integer.parseInt(v_);
 		}
 		if (op_.equals("=")) {
-			x = y = v;
-			if (op_.equals("덧셈")) {
+			int x = (Integer) application.getAttribute("value");
+			int y = v;
+			String op = (String) application.getAttribute(op_);
+
+			if (op.equals("+")) {
 				result = x + y;
 			} else {
 				result = x - y;
 			}
 		} else {
-
+			application.setAttribute("value", v_);
+			application.setAttribute("op_", op_);
 		}
 
 		response.getWriter().printf("result is %d\n", result);

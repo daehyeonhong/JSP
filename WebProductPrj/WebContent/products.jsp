@@ -10,8 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 목록</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css">
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
 </head>
 <body>
 	<jsp:include page="menu.jsp" />
@@ -29,11 +28,14 @@
 			<%
 				for (int i = 0; i < list.size(); i++) {
 				Product p = list.get(i);
+				String price = df.format(p.getUnitPrice());
 			%>
 			<div class="col-md-4">
+				<img alt="상품 사진" src="./resources/images/<%=p.getFileName()%>"
+					style="width: 100%">
 				<h3><%=p.getPname()%></h3>
 				<p><%=p.getDescription()%></p>
-				<p><%=df.format(p.getUnitPrice())%></p>
+				<p><%=price%></p>
 				<p>
 					<a href="product.jsp?id=<%=p.getProductId()%>"
 						class="btn btn-secondary" role="button">상세정보 &raquo;</a>
