@@ -1,6 +1,9 @@
+<<<<<<< HEAD
+=======
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
+>>>>>>> 1845198b5fa81030057cc011220524a681bb7100
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="productDAO" class="dao.ProductRepository"
@@ -14,6 +17,7 @@
 <body>
 	<%
 		request.setCharacterEncoding("UTF-8");
+<<<<<<< HEAD
 	%>
 	<jsp:useBean id="product" class="dto.Product" />
 	<jsp:setProperty property="*" name="product" />
