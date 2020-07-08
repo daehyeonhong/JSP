@@ -48,9 +48,9 @@
 	</p>
 
 	<!-- 액션태그를 이용한 bean생성 -->
-	<jsp:useBean id="memberRepository" class="dao.MemberRepository"
+	<jsp:useBean id="memberRepository" class="f.dao.MemberRepository"
 		scope="session" />
-	<jsp:useBean id="member" class="dto.Member" />
+	<jsp:useBean id="member" class="f.dto.Member" />
 
 	<!-- 속성 값 설정 -->
 	<%-- <jsp:setProperty property="idname" name="member" />

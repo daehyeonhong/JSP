@@ -1,9 +1,9 @@
-package dao;
+package f.dao;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import dto.Member;
+import f.dto.Member;
 
 public class MemberRepository {
 	static private MemberRepository instance = new MemberRepository();

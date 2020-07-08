@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="board" class="dto.Board" />
+	<jsp:useBean id="board" class="f.dto.Board" />
 	<!-- Parameter로 넘어오는 값들이 속성에 맞게 설정 -->
 	<jsp:setProperty property="*" name="board" />
 	<!-- 출력 -->

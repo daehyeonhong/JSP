@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="fruit" class="dto.Fruit" scope="request" />
+	<jsp:useBean id="fruit" class="f.dto.Fruit" scope="request" />
 
 	<%-- <jsp:setProperty property="kind" name="fruit" param="kind" />
 	<jsp:setProperty property="price" name="fruit" param="price" /> --%>

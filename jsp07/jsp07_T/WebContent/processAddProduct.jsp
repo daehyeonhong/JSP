@@ -1,17 +1,19 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="java.util.Enumeration"%>
-<%@page import="dto.Product"%>
+<%@page import="f.dto.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"/>
+<jsp:useBean id="productDAO" class="f.dao.ProductRepository" scope="session"/>
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<% request.setCharacterEncoding("utf-8"); %>
-<jsp:useBean id="product" class="dto.Product"/>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<jsp:useBean id="product" class="f.dto.Product"/>
 <%
 String filename = "";
 String realFolder = "/resources/images"; //웹 어플리케이션상의 절대 경로

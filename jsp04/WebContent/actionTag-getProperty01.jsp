@@ -8,7 +8,7 @@
 </head>
 <body>
 	<!-- 생성된 class(bean)에서 속성값을 출력할 때 getProperty(property:속성명) -->
-	<jsp:useBean id="person" class="dto.Person" />
+	<jsp:useBean id="person" class="f.dto.Person" />
 	<p>
 		아이디:<jsp:getProperty property="id" name="person" />
 	</p>

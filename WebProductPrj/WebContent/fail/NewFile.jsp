@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="prodcutDAO" class="dao.ProductRepository"
+<jsp:useBean id="prodcutDAO" class="f.dao.ProductRepository"
 	scope="session" />
 <!DOCTYPE html>
 <html>

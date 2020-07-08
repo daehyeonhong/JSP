@@ -1,9 +1,9 @@
-package dao;
+package f.dao;
 
 import java.util.List;
 import java.util.Vector;
 
-import dto.Product;
+import f.dto.Product;
 
 public class ProductRepository2 {
 	private static ProductRepository2 instance = new ProductRepository2();

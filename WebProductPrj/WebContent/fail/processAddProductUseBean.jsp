@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="productDAO" class="dao.ProductRepository"
+<jsp:useBean id="productDAO" class="f.dao.ProductRepository"
 	scope="session" />
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
 	<%
 		request.setCharacterEncoding("UTF-8");
 	%>
-	<jsp:useBean id="product" class="dto.Product" />
+	<jsp:useBean id="product" class="f.dto.Product" />
 	<jsp:setProperty property="*" name="product" />
 	<%-- <jsp:getProperty property="productId" name="product" />
 	<jsp:getProperty property="pname" name="product" />

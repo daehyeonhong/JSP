@@ -1,4 +1,4 @@
-package dao;
+package f.dao;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.Vector;
 
-import dto.Product;
+import f.dto.Product;
 
 public class ProductRepository {
 	private static ProductRepository instance = new ProductRepository();

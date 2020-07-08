@@ -1,5 +1,5 @@
 <%@page import="java.net.URLEncoder"%>
-<%@page import="dto.MemberBean"%>
+<%@page import="f.dto.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>

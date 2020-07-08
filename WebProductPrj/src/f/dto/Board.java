@@ -1,4 +1,4 @@
-package dto;
+package f.dto;
 
 public class Board {
 	// field

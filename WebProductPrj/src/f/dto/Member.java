@@ -1,4 +1,4 @@
-package dto;
+package f.dto;
 
 public class Member {
 	private String idname, pw, myname, phone1, phone2, phone3, gender, comment;

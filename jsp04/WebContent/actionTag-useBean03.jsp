@@ -12,7 +12,7 @@
 	<%-- <jsp:useBean id="member" class="dto.MemberBean" scope="request" /> --%>
 	<%-- <jsp:useBean id="member" class="dto.MemberBean" scope="session" /> --%>
 	<!-- scope:page(this), request(Page간 이동), session(Browser 범위), application(Server 범위) -->
-	<jsp:useBean id="member" class="dto.MemberBean" scope="application" />
+	<jsp:useBean id="member" class="f.dto.MemberBean" scope="application" />
 
 	<!-- member.setId(1); member.setName("홍길동"); -->
 	<jsp:setProperty property="id" value="1" name="member" />

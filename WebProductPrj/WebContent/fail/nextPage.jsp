@@ -1,6 +1,6 @@
 <%@page import="java.util.Arrays"%>
-<%@page import="dto.Member"%>
-<%@page import="dao.MemberRepository"%>
+<%@page import="f.dto.Member"%>
+<%@page import="f.dao.MemberRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -1,8 +1,8 @@
-<%@page import="dto.Product"%>
+<%@page import="f.dto.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"/>    
+<jsp:useBean id="productDAO" class="f.dao.ProductRepository" scope="session"/>    
 <!DOCTYPE html><html>
 <head><meta charset="UTF-8">
 <title>상품목록</title>

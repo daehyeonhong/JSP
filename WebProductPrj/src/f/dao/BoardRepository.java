@@ -1,9 +1,9 @@
-package dao;
+package f.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.Board;
+import f.dto.Board;
 
 public class BoardRepository {
 	// List
