@@ -2,7 +2,8 @@
 <%@page import="dao.ProductRepository"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%><!DOCTYPE html>
+	pageEncoding="UTF-8"
+%><!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
@@ -35,7 +36,8 @@
 		<div class="row">
 			<div class="col-md-5">
 				<img alt="상품 사진" src="./resources/images/<%=product.getFilename()%>"
-					style="width: 100%;" />
+					style="width: 100%;"
+				/>
 			</div>
 			<div class="col-md-6">
 				<h3><%=product.getPname()%></h3>
