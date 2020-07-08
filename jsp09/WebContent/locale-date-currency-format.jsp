@@ -40,5 +40,14 @@
 	<%
 		}
 	%>
+	<br />
+	<%
+		Locale[] locales = locale.getAvailableLocales();
+	for (int i = 0; i < locales.length; i++) {
+	%><%=locales[i].getDisplayCountry() + ": "
+		+ DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, locales[i])%>
+	<%
+		}
+	%>
 </body>
 </html>
