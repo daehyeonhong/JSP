@@ -17,7 +17,6 @@
 	<jsp:useBean id="product" class="dto.Product" />
 	<%
 		request.setCharacterEncoding("UTF-8");
-	String filename = "";
 	String realFolder = "/resources/images";
 	int maxSize = 5 * 1024 * 1024;
 	String encType = "UTF-8";
@@ -26,7 +25,7 @@
 			new DefaultFileRenamePolicy());
 
 	String productId = multi.getParameter("productId");
-	String pname = multi.getParameter("pname");
+	String pName = multi.getParameter("pname");
 	String unitPrice = multi.getParameter("unitPrice");
 	String description = multi.getParameter("description");
 	String manufacturer = multi.getParameter("manufacturer");
@@ -34,27 +33,16 @@
 	String unitsInStock = multi.getParameter("unitsInStock");
 	String condition = multi.getParameter("condition");
 
-	Integer price;
+	Integer price = unitPrice.isEmpty() ? 0 : Integer.valueOf(unitPrice);
 
-	if (unitPrice.isEmpty()) {
-		price = 0;
-	} else {
-		price = Integer.valueOf(unitPrice);
-	}
+	Long stock = unitsInStock.isEmpty() ? 0 : Long.valueOf(unitsInStock);
 
-	long stock;
-
-	if (unitsInStock.isEmpty()) {
-		stock = 0;
-	} else {
-		stock = Long.valueOf(unitsInStock);
-	}
 	Enumeration files = multi.getFileNames();
-	String fname = (String) files.nextElement();
-	String fileName = multi.getFilesystemName(fname);
+	String fName = (String) files.nextElement();
+	String fileName = multi.getFilesystemName(fName);
 
 	product.setProductId(productId);
-	product.setPname(pname);
+	product.setPname(pName);
 	product.setUnitPrice(price);
 	product.setDescription(description);
 	product.setManufacturer(manufacturer);
@@ -66,6 +54,5 @@
 	productDAO.addProduct(product);
 	response.sendRedirect("products.jsp");
 	%>
-
 </body>
 </html>
