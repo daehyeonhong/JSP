@@ -1,10 +1,12 @@
 <%@page import="dto.Product"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+%>
 <%@ page import="java.util.*"%>
 <jsp:useBean id="productDAO" class="dao.ProductRepository"
-	scope="session" />
+	scope="session"
+/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,13 +36,15 @@
 			%>
 			<div class="col-md-4">
 				<img alt="" src="./resources/images/<%=p.getFilename()%>"
-					style="width: 100%">
+					style="width: 100%"
+				>
 				<h3><%=p.getPname()%></h3>
 				<p><%=p.getDescription()%></p>
 				<p><%=price%></p>
 				<p>
 					<a href="product.jsp?id=<%=p.getProductId()%>"
-						class="btn btn-secondary" role="button">상세정보 &raquo;</a>
+						class="btn btn-secondary" role="button"
+					>상세정보 &raquo;</a>
 				</p>
 			</div>
 			<%

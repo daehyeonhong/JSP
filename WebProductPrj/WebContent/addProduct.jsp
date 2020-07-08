@@ -12,7 +12,6 @@ List<String> cateList = productDAO.getCategories();
 %>
 <!DOCTYPE html>
 <html>
->
 <head>
 <meta charset="UTF-8" />
 <title>상품 등록</title>

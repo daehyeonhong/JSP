@@ -10,17 +10,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<jsp:useBean id="product" class="dto.Product" />
 	<%
 		request.setCharacterEncoding("UTF-8");
-	String realFoler = "/resources/images";
+	String realFolder = "/resources/images";
 	int maxSize = 5 * 1024 * 1024;
 	String encType = "UTF-8";
-	MultipartRequest multi = new MultipartRequest(request, getServletContext().getRealPath(realFoler), maxSize, encType,
+	MultipartRequest multi = new MultipartRequest(request, getServletContext().getRealPath(realFolder), maxSize, encType,
 			new DefaultFileRenamePolicy());
 	String productId = multi.getParameter("productId");
 	String pName = multi.getParameter("pname");
@@ -49,7 +49,6 @@
 	String fName = (String) files.nextElement();
 	String fileName = multi.getFilesystemName(fName);
 	%>
-
 	<jsp:setProperty property="productId" name="product"
 		value="<%=productId%>"
 	/>
@@ -73,7 +72,6 @@
 	<jsp:setProperty property="filename" name="product"
 		value="<%=fileName%>"
 	/>
-
 	<%
 		productDAO.addProduct(product);
 	response.sendRedirect("./products.jsp");
