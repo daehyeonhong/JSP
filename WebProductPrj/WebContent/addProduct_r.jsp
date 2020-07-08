@@ -72,7 +72,7 @@ List<String> cateList = productDAO.getCategories();
 					<select name="category" id="category" class="form-control">
 						<%
 							for (int i = 0; i < cateList.size(); i++) {
-							out.print("<option'" + cateList.get(i) + "'>" + cateList.get(i) + "</option>");
+							out.print("<option value='" + cateList.get(i) + "'>" + cateList.get(i) + "</option>");
 						}
 						%>
 					</select>
@@ -113,4 +113,3 @@ List<String> cateList = productDAO.getCategories();
 	<jsp:include page="footer.jsp" />
 </body>
 </html>
-</String>
