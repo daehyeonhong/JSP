@@ -68,7 +68,8 @@ List<String> cateList = productDAO.getCategories();
 					<select name="category" class="form-control" id="category">
 						<%
 							for (int i = 0; i < cateList.size(); i++) {
-							out.print("<option value='" + cateList.get(i) + "'>" + cateList.get(i) + "</option>");
+							out.print("<option value='" + cateList.get(i) + "'>" +
+							cateList.get(i) + "</option>");
 						}
 						%>
 					</select>
