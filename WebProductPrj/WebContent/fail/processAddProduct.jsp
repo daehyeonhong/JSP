@@ -64,7 +64,7 @@
 	product.setCategory(category);
 	product.setUnitsInStock(stock);
 	product.setCondition(condition);
-	product.setFileName(fileName);
+	product.setFilename(fileName);
 
 	productDAO.addProduct(product);
 	response.sendRedirect("products.jsp");

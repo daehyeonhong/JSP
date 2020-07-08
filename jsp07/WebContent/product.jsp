@@ -1,6 +1,6 @@
+<%@page import="dto.Product"%>
+<%@page import="dao.ProductRepository"%>
 <%@page import="java.text.DecimalFormat"%>
-<%@page import="f.dao.ProductRepository"%>
-<%@page import="f.dto.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%><!DOCTYPE html>
 <html>

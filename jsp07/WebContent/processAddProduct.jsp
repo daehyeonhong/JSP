@@ -1,11 +1,9 @@
-<%@page import="f.dto.Product"%>
-<%@page import="f.dao.ProductRepository"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="productDAO" class="f.dao.ProductRepository"
+<jsp:useBean id="productDAO" class="dao.ProductRepository"
 	scope="session" />
 <!DOCTYPE html>
 <html>
@@ -14,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="product" class="f.dto.Product" />
+	<jsp:useBean id="product" class="dto.Product" />
 	<%
 		request.setCharacterEncoding("UTF-8");
 	String filename = "";

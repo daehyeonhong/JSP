@@ -31,7 +31,7 @@
 				String price = df.format(p.getUnitPrice());
 			%>
 			<div class="col-md-4">
-				<img alt="상품 사진" src="./resources/images/<%=p.getFileName()%>"
+				<img alt="상품 사진" src="./resources/images/<%=p.getFilename()%>"
 					style="width: 100%">
 				<h3><%=p.getPname()%></h3>
 				<p><%=p.getDescription()%></p>

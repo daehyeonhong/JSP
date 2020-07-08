@@ -1,12 +1,12 @@
-<%@page import="f.dto.Board"%>
+<%@page import="dto.Board"%>
 <%@page import="java.util.List"%>
-<%@page import="f.dao.BoardRepository"%>
+<%@page import="dao.BoardRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%-- <%
 	BoardRepository boardRepository = BoardRepository.getInstance();
 %> --%>
-<jsp:useBean id="boardRepository" class="f.dao.BoardRepository"
+<jsp:useBean id="boardRepository" class="dao.BoardRepository"
 	scope="session" />
 <!DOCTYPE html>
 <html>
