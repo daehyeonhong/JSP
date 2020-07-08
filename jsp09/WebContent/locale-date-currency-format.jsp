@@ -1,3 +1,4 @@
+<%@page import="java.util.TimeZone"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.Date"%>
@@ -30,5 +31,14 @@
 		숫자:
 		<%=numberFormat.format(12345.67)%>
 	</h4>
+	<br />
+	<%
+		String[] availableIDs = TimeZone.getAvailableIDs();
+	for (String id : availableIDs) {
+	%>
+	<%=id%><br />
+	<%
+		}
+	%>
 </body>
 </html>
