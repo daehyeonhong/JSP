@@ -64,6 +64,6 @@
 	productDAO.addProduct(product);
 	response.sendRedirect("products.jsp");
 	%>
-
+	<!-- 저장 해줘 -->
 </body>
 </html>
