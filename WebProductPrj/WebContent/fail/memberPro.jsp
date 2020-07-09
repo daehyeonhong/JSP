@@ -1,6 +1,7 @@
 <%@page import="java.util.Arrays"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +50,8 @@
 
 	<!-- 액션태그를 이용한 bean생성 -->
 	<jsp:useBean id="memberRepository" class="f.dao.MemberRepository"
-		scope="session" />
+		scope="session"
+	/>
 	<jsp:useBean id="member" class="f.dto.Member" />
 
 	<!-- 속성 값 설정 -->

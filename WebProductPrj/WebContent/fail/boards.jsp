@@ -1,20 +1,22 @@
 <%@page import="f.dto.Board"%>
 <%@page import="java.util.List"%>
-<%@page import="f.dao.BoardRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+%>
 <%-- <%
 	BoardRepository boardRepository = BoardRepository.getInstance();
 %> --%>
 <jsp:useBean id="boardRepository" class="f.dao.BoardRepository"
-	scope="session" />
+	scope="session"
+/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>게시글 목록</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css" />
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css"
+/>
 </head>
 <body>
 	<jsp:include page="menu.jsp" />

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+%>
 <jsp:useBean id="productDAO" class="f.dao.ProductRepository"
-	scope="session" />
+	scope="session"
+/>
 <!DOCTYPE html>
 <html>
 <head>
