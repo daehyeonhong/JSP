@@ -14,6 +14,7 @@
 		Locale locale = request.getLocale();
 	String date = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT, locale).format(new Date());
 	%>
+	<p>로케일의 날짜 형식</p>
 	<%=date%>
 </body>
 </html>
