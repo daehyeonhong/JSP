@@ -17,8 +17,7 @@
 <body>
 	<jsp:useBean id="product" class="dto.Product" />
 	<%
-		String filename = "";
-	String realFolder = "/resources/images";
+		String realFolder = "/resources/images";
 	int maxSize = 5 * 1024 * 1024;
 	String encType = "UTF-8";
 
@@ -41,8 +40,8 @@
 	long stock = unitsInStock.isEmpty() ? 0 : Long.parseLong(unitsInStock);
 
 	Enumeration files = multi.getFileNames();
-	String fname = (String) files.nextElement();
-	String fileName = multi.getFilesystemName(fname);
+	String fName = (String) files.nextElement();
+	String fileName = multi.getFilesystemName(fName);
 
 	product.setProductId(productId);
 	product.setPname(pname);
