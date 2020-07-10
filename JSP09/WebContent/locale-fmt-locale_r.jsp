@@ -5,25 +5,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Locale FMT</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<p>
-		<%=response.getLocale()%>
-	</p>
+	<p><%=response.getLocale()%></p>
 
 	<fmt:setLocale value="ja" />
-	<p>
-		<%=response.getLocale()%>
-	</p>
+	<p><%=response.getLocale()%></p>
 
 	<fmt:setLocale value="en" />
-	<p>
-		<%=response.getLocale()%>
-	</p>
+	<p><%=response.getLocale()%></p>
+
+	<fmt:setLocale value="en" />
+	<p><%=response.getLocale()%></p>
 
 	<%-- <%=request.setCharacterEncoding("UTF-8") %> --%>
 	<fmt:requestEncoding value="UTF-8" />
-	<%=request.getParameter("name")%>
+	<p><%=request.getParameter("name")%></p>
 </body>
 </html>
