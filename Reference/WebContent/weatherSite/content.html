@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <style>
+      main {
+        background: #345aa3;
+        color: #fff;
+      }
+      main .wrap {
+        background: #345aa3;
+        color: #fff;
+      }
+      main .wrap .firstContent #selectLoc #loc {
+        background: #345aa3;
+        color: #fff;
+      }
+      main .wrap .firstContent #selectLoc .btn {
+        background: #345aa3;
+        width: 27px;
+        height: 27px;
+      }
+      main .wrap .firstContent #selectLoc #warning {
+        position: relative;
+        float: right;
+        background: #800;
+        color: #fff;
+      }
+      main .wrap .firstContent .presentWrap .presentWeather {
+        float: left;
+      }
+    </style>
+  </head>
+  <main>
+    <div class="wrap">
+      <div id="selectLoc">
+        <select name="loc" id="loc">
+          <option value="loc">서울특별시 동작구 신대방제2동</option>
+        </select>
+        <button>
+          <img
+            src="resources/images/btn_bookmark.png"
+            alt="btn_bookmark"
+            class="btn"
+          />
+        </button>
+        <button>
+          <img
+            src="resources/images/btn_search.png"
+            alt="btn_search"
+            class="btn"
+          />
+        </button>
+        <p>지금 내리는 비는 23시00분에 그칠 것으로 예상됨.</p>
+        <button id="warning">
+          기상특보:발효중<img
+            src="resources/images/arrow_down.png"
+            alt="arrow_down"
+          />
+        </button>
+      </div>
+      <!-- selectLoc -->
+
+      <div class="firstContent">
+        <div class="presentWrap">
+          <div class="presentWeather">
+            현재<img src="resources/images/DB05.png" alt="" />
+          </div>
+          <div class="presentWeather">
+            <script>
+              document.write(new Date().getHours() > 24 ? -24 : 0 + 1 + "시");
+            </script>
+            <img src="resources/images/DB05.png" alt="" />
+          </div>
+          <div class="presentWeather">
+            <script>
+              document.write(new Date().getHours() > 24 ? -24 : 0 + 2 + "시");
+            </script>
+            <img src="resources/images/DB05.png" alt="" />
+          </div>
+          <div class="presentWeather">
+            <script>
+              document.write(new Date().getHours() > 24 ? -24 : 0 + 3 + "시");
+            </script>
+            <img src="resources/images/DB05.png" alt="" />
+          </div>
+        </div>
+        <!-- presentWrap -->
+        <div id="update"></div>
+        <span id="currentTime"
+          ><img
+            src="resources/images/icon_refresh.png"
+            alt="icon_refresh"
+          />업데이트
+          <script>
+            var curTime = new Date();
+            var curDay = curTime.getDay();
+            curDay =
+              curDay == 0
+                ? "일"
+                : curDay == 1
+                ? "월"
+                : curDay == 2
+                ? "화"
+                : curDay == 3
+                ? "수"
+                : curDay == 4
+                ? "목"
+                : curDay == 5
+                ? "금"
+                : "토";
+            var curMinutes = curTime.getMinutes();
+            curMinutes = curMinutes < 30 ? 0 : 30;
+            document.write(
+              curTime.toLocaleDateString() +
+                "(" +
+                curDay +
+                ")" +
+                curTime.getHours() +
+                ":" +
+                curMinutes
+            );
+          </script></span
+        >
+      </div>
+      <!-- firstContent -->
+      <div class="lastContent"></div>
+      <!-- lastContent -->
+    </div>
+  </main>
+</html>

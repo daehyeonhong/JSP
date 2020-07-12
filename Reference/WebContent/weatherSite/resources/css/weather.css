@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+header {
+  background: #009ae1;
+  height: 53px;
+}
+.header {
+  position: relative;
+  padding: 10px;
+}
+.header img {
+  width: 35px;
+  height: 35px;
+  float: left;
+}
+
+.header h3 {
+  position: relative;
+  color: #fff;
+  bottom: 12.5px;
+}
+
+footer {
+  background: #e3e3e3;
+  font-size: 12px;
+  text-align: center;
+}
+.footer a {
+  text-decoration: none;
+  color: #000;
+  height: 15px;
+  line-height: 15px;
+}
+.footer span {
+  margin-top: 5px;
+  padding: 0 10px;
+  color: #595959;
+  font-size: 12px;
+}

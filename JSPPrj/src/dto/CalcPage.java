@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/calcPage")
-public class CalculatorPage extends HttpServlet {
+@WebServlet("/CalcPage")
+public class CalcPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -59,7 +59,7 @@ public class CalculatorPage extends HttpServlet {
 		out.write("</style>");
 		out.write("</head>");
 		out.write("<body>");
-		out.write("	<form action=\"calc.jsp\" method=\"post\">");
+		out.write("	<form action=\"calc\" method=\"post\">");
 		out.write("		<table>");
 		out.write("			<tr>");
 		out.printf("				<td class=\"output\" colspan=\"4\">%s</td>", expression);
