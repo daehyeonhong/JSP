@@ -39,10 +39,11 @@
 			<div class="col-md-6">
 				<h3>
 					<%=product.getPname()%>
-					<p>
-						<%product.getDescription()%>
-						<p><b>상품코드: <span class="badge_badge-danger"><%=product.getProductId()%></span></b></p>
-					</p>
+					<%
+						product.getDescription();
+					%>
+
+					<b>상품코드: <span class="badge_badge-danger"><%=product.getProductId()%></span></b>
 				</h3>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
-<%@page import="f.dao.ProductRepository"%>
-<%@page import="f.dto.Product"%>
+<%@page import="dao.ProductRepository"%>
+<%@page import="dto.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

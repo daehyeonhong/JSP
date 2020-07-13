@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="member" class="f.dto.MemberBean" scope="session" />
+	<jsp:useBean id="member" class="dto.MemberBean" scope="session" />
 	<jsp:setProperty property="id" name="member" value="1" />
 	<jsp:setProperty property="name" name="member" value="hong" />
 	<jsp:forward page="page1.jsp" />

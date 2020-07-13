@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="person" class="f.dto.Person" scope="request" />
+	<jsp:useBean id="person" class="dto.Person" scope="request" />
 	<p>
 		아이디:<%=person.getId()%><br />
 	</p>

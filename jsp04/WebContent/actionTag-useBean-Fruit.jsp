@@ -1,4 +1,4 @@
-<%@page import="f.dto.Fruit"%>
+<%@page import="dto.Fruit"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,8 +10,8 @@
 <body>
 	<%
 		Fruit fruit1 = new Fruit();
-		fruit1.setKind("Apple");
-		fruit1.setPrice(2000);
+	fruit1.setKind("Apple");
+	fruit1.setPrice(2000);
 	%>
 
 	<%=fruit1.getKind()%><br />
@@ -20,7 +20,7 @@
 	<h3>actionTag 사용</h3>
 
 	<!-- Bean 생성 -->
-	<jsp:useBean id="fruit2" class="f.dto.Fruit" />
+	<jsp:useBean id="fruit2" class="dto.Fruit" />
 
 	<!-- 속성에 값 입력 -->
 	<jsp:setProperty property="kind" value="포도" name="fruit2" />

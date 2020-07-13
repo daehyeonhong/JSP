@@ -1,4 +1,4 @@
-<%@page import="f.dto.WorldTime"%>
+<%@page import="dto.WorldTime"%>
 <%@page import="java.util.TimeZone"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

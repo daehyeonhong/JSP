@@ -8,7 +8,7 @@
 </head>
 <body>
 	<!-- Board board = new Board(); -->
-	<jsp:useBean id="board" class="f.dto.Board" />
+	<jsp:useBean id="board" class="dto.Board" />
 	<jsp:setProperty property="no" name="board" />
 	<jsp:setProperty property="title" name="board" param="subject" />
 	<jsp:setProperty property="writer" name="board" />

@@ -7,6 +7,7 @@
       main {
         background: #345aa3;
         color: #fff;
+        min-height: 170px;
       }
       main .wrap {
         background: #345aa3;
@@ -21,14 +22,42 @@
         width: 27px;
         height: 27px;
       }
-      main .wrap .firstContent #selectLoc #warning {
+      #locBtn {
+        background: #345aa3;
+        width: 15px;
+        height: 15px;
+        margin: 0px;
+        padding: 0px;
+      }
+      #selectLoc button {
+        margin: 0px;
+        padding: 0px;
+      }
+      #currentWeather {
+        border: 0.2px solid #fff;
+      }
+      #warning {
         position: relative;
         float: right;
         background: #800;
         color: #fff;
       }
+      #warningIcon {
+        background: #800;
+      }
       main .wrap .firstContent .presentWrap .presentWeather {
         float: left;
+      }
+      main .wrap .firstContent .presentWrap .presentWeather img {
+        height: 50px;
+        width: 50px;
+      }
+      #currentTime {
+        display: block;
+      }
+
+      .clear {
+        clear: both;
       }
     </style>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -78,21 +107,24 @@
           <img
             src="resources/images/btn_bookmark.png"
             alt="btn_bookmark"
-            class="btn"
+            id="locBtn"
           />
         </button>
         <button>
           <img
             src="resources/images/btn_search.png"
             alt="btn_search"
-            class="btn"
+            id="locBtn"
           />
         </button>
-        <p>지금 내리는 비는 23시00분에 그칠 것으로 예상됨.</p>
+        <div id="currentWeather">
+          지금 내리는 비는 23시00분에 그칠 것으로 예상됨.
+        </div>
         <button id="warning">
           기상특보:발효중<img
             src="resources/images/arrow_down.png"
             alt="arrow_down"
+            id="warningIcon"
           />
         </button>
       </div>
@@ -123,6 +155,7 @@
           </div>
         </div>
         <!-- presentWrap -->
+        <div class="clear"></div>
         <div id="update"></div>
         <span id="currentTime"
           ><img
