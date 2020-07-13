@@ -116,7 +116,7 @@ List<String> cateList = productDAO.getCategories();
 				<div class="form-group row">
 					<div class="col-sm-offset-2 col-sm-10">
 						<input type="submit" class="btn btn-primary"
-							value="<fmt:message key="button"/>"
+							value='<fmt:message key="button"/>'
 							onclick="return CheckAddProduct()" />
 					</div>
 				</div>
