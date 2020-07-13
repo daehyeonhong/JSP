@@ -31,6 +31,42 @@
         float: left;
       }
     </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      var curTime = new Date();
+      var curDay = curTime.getDay();
+      var curMinutes = curTime.getMinutes();
+
+      function curDay(curDay) {
+        curDay =
+          curDay == 0
+            ? "일"
+            : curDay == 1
+            ? "월"
+            : curDay == 2
+            ? "화"
+            : curDay == 3
+            ? "수"
+            : curDay == 4
+            ? "목"
+            : curDay == 5
+            ? "금"
+            : "토";
+      }
+
+      function curMinutes(curMinutes) {
+        curMinutes = curMinutes < 30 ? 0 : 30;
+        document.write(
+          curTime.toLocaleDateString() +
+            "(" +
+            curDay +
+            ")" +
+            curTime.getHours() +
+            ":" +
+            curMinutes
+        );
+      }
+    </script>
   </head>
   <main>
     <div class="wrap">
@@ -69,7 +105,7 @@
           </div>
           <div class="presentWeather">
             <script>
-              document.write(new Date().getHours() > 24 ? -24 : 0 + 1 + "시");
+              document.write((new Date().getHours() > 24 ? -24 : +1) + "시");
             </script>
             <img src="resources/images/DB05.png" alt="" />
           </div>
@@ -92,36 +128,7 @@
           ><img
             src="resources/images/icon_refresh.png"
             alt="icon_refresh"
-          />업데이트
-          <script>
-            var curTime = new Date();
-            var curDay = curTime.getDay();
-            curDay =
-              curDay == 0
-                ? "일"
-                : curDay == 1
-                ? "월"
-                : curDay == 2
-                ? "화"
-                : curDay == 3
-                ? "수"
-                : curDay == 4
-                ? "목"
-                : curDay == 5
-                ? "금"
-                : "토";
-            var curMinutes = curTime.getMinutes();
-            curMinutes = curMinutes < 30 ? 0 : 30;
-            document.write(
-              curTime.toLocaleDateString() +
-                "(" +
-                curDay +
-                ")" +
-                curTime.getHours() +
-                ":" +
-                curMinutes
-            );
-          </script></span
+          />업데이트</span
         >
       </div>
       <!-- firstContent -->
