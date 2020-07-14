@@ -1,3 +1,4 @@
+'use strict';
 function CheckAddProduct() {
   var productId = document.getElementById("productId");
   var name = document.getElementById("pname");
