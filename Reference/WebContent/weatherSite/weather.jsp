@@ -52,6 +52,8 @@ footer span {
 nav {
 	height: 50px;
 	padding: 4px;
+	vertical-align: middle;
+	text-align: center;
 }
 
 .navbar a {
@@ -66,6 +68,7 @@ nav {
 	line-height: 20px;
 	background: #fff;
 	color: #666;
+	line-height: 20px;
 }
 
 main {

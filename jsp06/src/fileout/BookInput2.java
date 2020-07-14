@@ -14,9 +14,9 @@ public class BookInput2 {
 				Book book = list.get(i);
 				/* Book b1 = (Book) ois.readObject(); */
 				System.out.println(book.subject + ", " + book.price /* transient */ + ", " + book.write + ", "
-						+ book.publish /* static */);
+						+ Book.publish /* static */);
 				System.out.printf("제목: \"%s\", 가격: %d원, 저자: \"%s\", 출판사: \"%s\"\n", book.subject, book.price,
-						book.write, book.publish);
+						book.write, Book.publish);
 			}
 		} catch (Exception e) {
 		}

@@ -17,6 +17,5 @@ public class Book implements Serializable {
 		this.subject = subject;
 		this.write = write;
 		this.price = price;
-		this.publish = publish;
 	}
 }
