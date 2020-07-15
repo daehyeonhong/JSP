@@ -5,16 +5,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	String id = request.getParameter("id");
+	/* parameter로 넘어온 [ID_Value] */
+String id = request.getParameter("id");
 
-if (id == null || id.trim().equals("")) {
+/* ID값이 넘어왔는지 확인 */
+if (id == null || id.trim().equals("")) {/* [ID_Value]가 넘어오지 않았으면 상품리스트 페이지로 이동 */
 	response.sendRedirect("products.jsp");
 	return;
 }
-ProductRepository dao = ProductRepository.getInstance();
-Product product = dao.getProductById("id");
 
-if (product == null) {
+/* [ID_Value]가 존재하면 상품처리 객체 생성 */
+ProductRepository dao = ProductRepository.getInstance();
+/* 해당 ID에 맞는 상품정보 얻기 */
+Product product = dao.getProductById(id);
+
+if (product == null) {/* 해당 ID로 상품이 존재하지 않으면 ErrorPage로 이동 */
 	response.sendRedirect("exceptionNoProductId.jsp");
 }
 
@@ -31,8 +36,9 @@ for (int i = 0; i < goodList.size(); i++) {
 	}
 }
 
-/* 세션에 cartlist가 있는지 여부 확안
-없으면 cartlist를 생성하여 session에 저장 */
+/* 세션에 cartList가 있는지 여부 확인
+없으면 cartList를 생성하여 session에 저장 */
+
 ArrayList<Product> list = (ArrayList<Product>) session.getAttribute("cartlist");
 if (list == null) {
 	list = new ArrayList<Product>();
@@ -58,7 +64,11 @@ if (cnt == 0) {
 	goods.setQuantity(1);
 	list.add(goods);
 }
-
+System.out.println("상품수량: " + cnt);
 /* 상세페이지로 이동시 원래 상품 정보 출력 */
-response.sendRedirect("product.jsp?id=" + id);
+/* response.sendRedirect("product.jsp?id=" + id); */
+response.sendRedirect("products.jsp");
+/* request.setAttribute("id", id);
+RequestDispatcher requestDispatcher = request.getRequestDispatcher("product.jsp?id=" + id);
+requestDispatcher.forward(request, response); */
 %>

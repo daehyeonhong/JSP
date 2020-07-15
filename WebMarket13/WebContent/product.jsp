@@ -31,11 +31,12 @@
 	</div>
 
 	<%
-		DecimalFormat df = new DecimalFormat("\u00A4 #,###");
+		DecimalFormat priceDf = new DecimalFormat("\u00A4 #,###");
+	DecimalFormat df = new DecimalFormat("#,###");
 	String id = request.getParameter("id");
 	ProductRepository dao = (ProductRepository) session.getAttribute("productDAO");
 	Product product = dao.getProductById(id);
-	String price = df.format(product.getUnitPrice());
+	String price = priceDf.format(product.getUnitPrice()), stock = df.format(product.getUnitsInStock());
 	%>
 	<div class="container">
 		<div class="row">
@@ -54,7 +55,7 @@
 				<p>
 					<b>분류</b>:<%=product.getCategory()%></p>
 				<p>
-					<b>재고</b>:<%=product.getUnitsInStock()%></p>
+					<b>재고</b>:<%=stock%></p>
 				<h4>
 					<%=price%>
 				</h4>
