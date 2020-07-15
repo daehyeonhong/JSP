@@ -45,7 +45,7 @@ public class LogFileFilter implements Filter {
 		/* 요청 전달 후 응답객체를 확인하여 콘텐츠 유형을 기록함. */
 		String contentType = response.getContentType();
 		writer.printf("문서의 콘텐츠 유형: %s %n", contentType);
-		writer.print("──────────────────────────────────────────────────────────");
+		writer.printf("─────────────────────%n");
 	}
 
 	private Object getCurrentTime() {

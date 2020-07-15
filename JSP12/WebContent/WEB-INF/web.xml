@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	<display-name>JSP12</display-name>
+
 	<filter>
 		<filter-name>Filter00</filter-name>
 		<filter-class>ch12.com.filter.CharaterEncodingFilter</filter-class>
@@ -16,7 +17,7 @@
 		<filter-name>Filter00</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>Filter01</filter-name>
 		<filter-class>ch12.com.filter.AuthenFilter</filter-class>
@@ -46,7 +47,6 @@
 	<filter>
 		<filter-name>Filter02_02</filter-name>
 		<filter-class>ch12.com.filter.LogFileFilter</filter-class>
-
 		<init-param>
 			<param-name>fileName</param-name>
 			<param-value>c:\\logs\\monitor.log</param-value>

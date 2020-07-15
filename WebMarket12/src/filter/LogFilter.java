@@ -28,6 +28,7 @@ public class LogFilter implements Filter {
 		writer.printf("접촉한 클라이언트 IP: %s %n", request.getRemoteAddr());
 		long start = System.currentTimeMillis();
 		writer.printf("요청방식: %s %n", ((HttpServletRequest) request).getMethod());
+		/* ServletRequest -> HttpServletRequest casting */
 		writer.printf("접근한 URL 경로: %s %n", getURLPath(request));
 		writer.printf("요청 처리 시작 시각: %s %n", getCurrentTime());
 		chain.doFilter(request, response);
@@ -35,7 +36,7 @@ public class LogFilter implements Filter {
 		long end = System.currentTimeMillis();
 		writer.printf("요청 처리 종료시각: %s %n", getCurrentTime());
 		writer.printf("요청 처리 소요시간: %s ms%n", (end - start));
-		writer.printf("────────────────────────────────────%n");
+		writer.printf("─────────────────────%n");
 	}
 
 	private String getCurrentTime() {
