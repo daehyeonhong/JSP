@@ -84,7 +84,7 @@ String cartId = session.getId();
 				<tr>
 					<td><input type="text"
 						value="<%=product.getProductId()%> - <%=product.getPname()%>"
-						id="id" name="<%=product.getProductId()%>" readonly /></td>
+						id="id" readonly /></td>
 					<td><%=price%></td>
 					<td><input type="number" id="qty"
 						value="<%=product.getQuantity()%>" /> <input type="button"
@@ -93,10 +93,10 @@ String cartId = session.getId();
 					<td><a href="./removeCart.jsp?id=<%=product.getProductId()%>"
 						class="badge badge-danger">삭제</a></td>
 				</tr>
+				<%
+					}
+				%>
 			</table>
-			<%
-				}
-			%>
 		</div>
 	</div>
 	<!-- container -->
