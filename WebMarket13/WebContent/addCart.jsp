@@ -21,6 +21,7 @@ Product product = dao.getProductById(id);
 
 if (product == null) {/* 해당 ID로 상품이 존재하지 않으면 ErrorPage로 이동 */
 	response.sendRedirect("exceptionNoProductId.jsp");
+	return;
 }
 
 /* 상품 전체 리스트 받기 */
