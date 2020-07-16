@@ -59,7 +59,7 @@ String cartId = session.getId();
 				</tr>
 				<%
 					int sum = 0;
-				List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
+				List<Product> cartList = (List<Product>) session.getAttribute("cartList");
 				if (cartList == null) {
 					cartList = new ArrayList<Product>();
 				}

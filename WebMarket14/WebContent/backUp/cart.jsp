@@ -74,12 +74,14 @@ String cartId = session.getId();
 					cartList = new ArrayList<Product>();
 				}
 
+				int cnt = 0;
 				for (int i = 0; i < cartList.size(); i++) {
 					Product product = cartList.get(i);
 					int total = product.getUnitPrice() * product.getQuantity();/* 단가 * 수량 = 금액 */
 					sum = sum + total;/* sum(총금액) = 개별 상품의 가격 합. */
 					String price = priceDf.format(product.getUnitPrice()), qnt = qntDf.format(product.getQuantity()),
 					totalDf = priceDf.format(total);
+					cnt++;
 				%>
 				<tr>
 					<td><input type="text"
@@ -93,10 +95,10 @@ String cartId = session.getId();
 					<td><a href="./removeCart.jsp?id=<%=product.getProductId()%>"
 						class="badge badge-danger">삭제</a></td>
 				</tr>
+				<%
+					}
+				%>
 			</table>
-			<%
-				}
-			%>
 		</div>
 	</div>
 	<!-- container -->

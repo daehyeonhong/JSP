@@ -40,10 +40,10 @@ for (int i = 0; i < goodList.size(); i++) {
 /* 세션에 cartList가 있는지 여부 확인
 없으면 cartList를 생성하여 session에 저장 */
 
-ArrayList<Product> list = (ArrayList<Product>) session.getAttribute("cartlist");
+ArrayList<Product> list = (ArrayList<Product>) session.getAttribute("cartList");
 if (list == null) {
 	list = new ArrayList<Product>();
-	session.setAttribute("cartlist", list);
+	session.setAttribute("cartList", list);
 }
 
 int cnt = 0;

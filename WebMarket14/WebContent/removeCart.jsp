@@ -25,7 +25,7 @@ if (product == null) {
 
 /* 해당 상품 정보가 있으면 */
 /* cartList에서 해당 상품 정보 얻기 */
-List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
+List<Product> cartList = (List<Product>) session.getAttribute("cartList");
 /* 해당 상품 정보가 cartList에 있으면 */
 Product goodsQnt = new Product();
 for (int i = 0; i < cartList.size(); i++) {
