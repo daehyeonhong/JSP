@@ -2,11 +2,9 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-%>
+	pageEncoding="UTF-8"%>
 <jsp:useBean id="productDAO" class="dao.ProductRepository"
-	scope="session"
-/>
+	scope="session" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,28 +49,21 @@
 	%>
 
 	<jsp:setProperty property="productId" name="product"
-		value="<%=productId%>"
-	/>
+		value="<%=productId%>" />
 	<jsp:setProperty property="pname" name="product" value="<%=pName%>" />
 	<jsp:setProperty property="unitPrice" name="product" value="<%=price%>" />
 	<jsp:setProperty property="description" name="product"
-		value="<%=description%>"
-	/>
+		value="<%=description%>" />
 	<jsp:setProperty property="manufacturer" name="product"
-		value="<%=manufacturer%>"
-	/>
+		value="<%=manufacturer%>" />
 	<jsp:setProperty property="category" name="product"
-		value="<%=category%>"
-	/>
+		value="<%=category%>" />
 	<jsp:setProperty property="unitsInStock" name="product"
-		value="<%=stock%>"
-	/>
+		value="<%=stock%>" />
 	<jsp:setProperty property="condition" name="product"
-		value="<%=condition%>"
-	/>
+		value="<%=condition%>" />
 	<jsp:setProperty property="filename" name="product"
-		value="<%=fileName%>"
-	/>
+		value="<%=fileName%>" />
 
 	<%
 		productDAO.addProduct(product);
