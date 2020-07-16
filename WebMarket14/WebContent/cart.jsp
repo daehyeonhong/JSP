@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.Product"%>
@@ -16,22 +17,23 @@ String cartId = session.getId();
 <!-- sessionId -->
 <meta charset="UTF-8" />
 <title>장바구니</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	/* JavaScript Function Init function[function_name](argument){}*/
 	function deleteCart() {
 		/* alert("카트초기화"); */
 		/* 메세지 출력 메소드 */
 		if (confirm("장바구니를 비우시겠습니까?")) {
-			document.addForm.submit();/* action경로로 이동처리 */
+			document.addForm.submit();/* action경로로 이동 처리 */
 		} else {
 			document.addForm.reset();/* 초기화 처리 */
 		}
 	}
-	function change() {
-		let id = document.getElementById("id").value.substring(0, 5);
-		let qty = document.getElementById("qty").value;
+	function change(id) {
+		/* let id = document.getElementById("id").value.substring(0, 5); */
+		let qty = document.getElementById(id).value;
 		if (confirm("수정하시겠습니까?")) {
-			location.href = "./changeCart.jsp?id=" + id + "&qty=" + qty;
+			location.href = "changeCart.jsp?id=" + id + "&qty=" + qty;
 		} else {
 			document.addForm.reset();
 		}
@@ -76,21 +78,22 @@ String cartId = session.getId();
 
 				for (int i = 0; i < cartList.size(); i++) {
 					Product product = cartList.get(i);
+					String id = product.getProductId();
 					int total = product.getUnitPrice() * product.getQuantity();/* 단가 * 수량 = 금액 */
 					sum = sum + total;/* sum(총금액) = 개별 상품의 가격 합. */
 					String price = priceDf.format(product.getUnitPrice()), qnt = qntDf.format(product.getQuantity()),
 					totalDf = priceDf.format(total);
+					String qty = String.valueOf(product.getQuantity());
 				%>
 				<tr>
 					<td><input type="text"
-						value="<%=product.getProductId()%> - <%=product.getPname()%>"
-						id="id" readonly /></td>
+						value="<%=id%> - <%=product.getPname()%>" id="id" readonly /></td>
 					<td><%=price%></td>
-					<td><input type="number" id="qty"
+					<td><input type="number" id="<%=id%>"
 						value="<%=product.getQuantity()%>" /> <input type="button"
-						class="btn btn-primary" onclick="change()" value="수정" /></td>
+						class="btn btn-primary" onclick="change('<%=id%>')" value="수정" /></td>
 					<td><%=totalDf%></td>
-					<td><a href="./removeCart.jsp?id=<%=product.getProductId()%>"
+					<td><a href="./removeCart.jsp?id=<%=id%>"
 						class="badge badge-danger">삭제</a></td>
 				</tr>
 				<%
