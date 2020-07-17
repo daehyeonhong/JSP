@@ -18,6 +18,9 @@
 		} else {
 			document.addForm.reset();/* 초기화 처리 */
 		}
+		function checkQty(id) {
+			return document.getElementById(id).value;
+		}
 	}
 </script>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
@@ -61,8 +64,13 @@
 					<%=price%>
 				</h4>
 				<form name="addForm"
-					action="./addCart.jsp?id=<%=product.getProductId()%>" method="post">
-					<a href="#" class="btn btn-info" onclick="addToCart()">상품
+					action="./addCart.jsp?id=<%=product.getProductId()%>qty=checkQty()"
+					method="post">
+					<p>
+						<b>수량</b>:<input type="number" id="qty">
+					</p>
+					<a href="#" class="btn btn-info"
+						onclick="addToCart('<%=product.getProductId()%>')">상품
 						주문&raquo;</a> <a href="./cart.jsp" class="btn btn-warning">장바구니&raquo;</a>
 					<a href="./products.jsp" class="btn btn-secondary">상품 목록&raquo;</a>
 				</form>

@@ -40,7 +40,7 @@ if (cookies != null) {
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 </head>
 <body>
-	<jsp:include page="menu.jsp" />\\172.30.1.9
+	<jsp:include page="menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">주문정보</h1>

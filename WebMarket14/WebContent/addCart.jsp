@@ -7,6 +7,7 @@
 <%
 	/* parameter로 넘어온 [ID_Value] */
 String id = request.getParameter("id");
+int qty = Integer.parseInt(request.getParameter("qty"));
 
 /* ID값이 넘어왔는지 확인 */
 if (id == null || id.trim().equals("")) {/* [ID_Value]가 넘어오지 않았으면 상품리스트 페이지로 이동 */

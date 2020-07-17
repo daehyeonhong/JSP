@@ -29,11 +29,10 @@ String cartId = session.getId();
 			document.addForm.reset();/* 초기화 처리 */
 		}
 	}
-
-	function change(id) {
-		/* let id = document.getElementById("id").value.substring(0, 5); */
-		let qty = document.getElementById(id).value;
-		let name = document.getElementById(id).name;
+	function change(seq) {
+		let id = document.getElementById("id" + seq).value.substring(0, 5);
+		let qty = document.getElementById(id + seq).value;
+		let name = document.getElementById(id + seq).name;
 		if (qty < 0) {
 			qty = 0;
 		}
@@ -43,10 +42,10 @@ String cartId = session.getId();
 			document.addForm.reset();
 		}
 	}
-
-	function changeNumber(id) {
-		let btn = document.getElementById(id);
-		btn.disabled = "";
+	
+	function k(seq) {
+		let btn = document.getElementById("btn"+seq);
+		btn.disabled="";
 	}
 </script>
 </head>
@@ -97,13 +96,12 @@ String cartId = session.getId();
 				%>
 				<tr>
 					<td><input type="text"
-						value="<%=id%> - <%=product.getPname()%>" id="id" readonly /></td>
+						value="<%=id%> - <%=product.getPname()%>" id="id<%=i%>" readonly /></td>
 					<td><%=price%></td>
-					<td><input type="number" id="<%=id%>"
-						name="<%=product.getPname()%>" value="<%=product.getQuantity()%>"
-						onchange="changeNumber(<%=i%>)" /> <input type="button"
-						id="<%=i%>" class="btn btn-primary" onclick="change('<%=id%>')"
-						value="수정" disabled="disabled" /></td>
+					<td><input type="number" id="qty<%=i%>"
+						name="<%=product.getPname()%>" onchange="k(<%=i%>)" /> <input
+						type="button" id="btn<%=i%>" class="btn btn-primary"
+						onclick="change('<%=id%>')" value="수정" disabled="disabled" /></td>
 					<td><%=totalDf%></td>
 					<td><a href="./removeCart.jsp?id=<%=id%>"
 						class="badge badge-danger">삭제</a></td>
