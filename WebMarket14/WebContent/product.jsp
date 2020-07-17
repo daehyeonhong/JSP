@@ -18,8 +18,15 @@
 		} else {
 			document.addForm.reset();/* 초기화 처리 */
 		}
-		function checkQty(id) {
-			return document.getElementById(id).value;
+	}
+	function changeNumber(stock) {
+		const qty= document.getElementById("qty").value;
+		if (qty>stock) {
+			alert("재고보다 많은 수량을 선택할 수 없습니다.");
+			document.getElementById("qty").value=1;
+		}else if (qty<=0) {
+			alert("0이상 선택.");
+			document.getElementById("qty").value=1;
 		}
 	}
 </script>
@@ -63,14 +70,13 @@
 				<h4>
 					<%=price%>
 				</h4>
-				<form name="addForm"
-					action="./addCart.jsp?id=<%=product.getProductId()%>qty=checkQty()"
-					method="post">
+				<form name="addForm" id="addForm"
+					action="./addCart.jsp?id=<%=product.getProductId()%>" method="post">
 					<p>
-						<b>수량</b>:<input type="number" id="qty">
+						<b>수량</b>:<input type="number" id="qty" value="1"
+							onchange="changeNumber(<%=product.getUnitsInStock()%>)" />
 					</p>
-					<a href="#" class="btn btn-info"
-						onclick="addToCart('<%=product.getProductId()%>')">상품
+					<a href="#" class="btn btn-info" onclick="addToCart()">상품
 						주문&raquo;</a> <a href="./cart.jsp" class="btn btn-warning">장바구니&raquo;</a>
 					<a href="./products.jsp" class="btn btn-secondary">상품 목록&raquo;</a>
 				</form>

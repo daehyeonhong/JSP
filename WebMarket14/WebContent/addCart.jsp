@@ -8,7 +8,6 @@
 	/* parameter로 넘어온 [ID_Value] */
 String id = request.getParameter("id");
 int qty = Integer.parseInt(request.getParameter("qty"));
-
 /* ID값이 넘어왔는지 확인 */
 if (id == null || id.trim().equals("")) {/* [ID_Value]가 넘어오지 않았으면 상품리스트 페이지로 이동 */
 	response.sendRedirect("products.jsp");
@@ -56,14 +55,14 @@ for (int i = 0; i < list.size(); i++) {
 	goodsQnt = list.get(i);
 	if (goodsQnt.getProductId().equals(id)) {
 		cnt++;
-		int orderQuantity = goodsQnt.getQuantity() + 1;/* 장바구니수량 증가 */
+		int orderQuantity = goodsQnt.getQuantity() + qty;/* 장바구니수량 증가 */
 		goodsQnt.setQuantity(orderQuantity);
 	}
 }
 
 /* 장바구니에 해당 상품이 없으면 */
 if (cnt == 0) {
-	goods.setQuantity(1);
+	goods.setQuantity(qty);
 	list.add(goods);
 }
 System.out.println("상품수량: " + goods.getQuantity());
