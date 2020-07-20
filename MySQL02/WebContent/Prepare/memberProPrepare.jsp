@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -24,15 +25,17 @@
 		connection = DriverManager.getConnection(url, user, password);
 
 		/* 3. 쿼리 객체 생성 */
-		Statement statement = connection.createStatement();
-
+		String sql = "insert member(name,passwd)values(?,?);";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		/* 4. 쿼리문 실행 및 결과 받기 */
-		/* 4-1. 데이터 입력 쿼리 */
-		String sql = "insert member(name,passwd)values('" + name + "','" + passwd + "');";
+		/* 4-1. 바인딩 변수 처리 */
+		preparedStatement.setString(1, name);
+		preparedStatement.setString(2, passwd);
+
 		System.out.printf("쿼리문: %s%n", sql);
 
 		/* 4-2. 입력 처리 excuteUpdate()의 결과는 반영된 행의 수 */
-		int result = statement.executeUpdate(sql);
+		int result = preparedStatement.executeUpdate();
 
 		/* 5. 결과 처리 */
 		if (result > 0) {
