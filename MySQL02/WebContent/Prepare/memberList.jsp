@@ -26,7 +26,7 @@ try {
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1px">
+	<table border="1">
 		<tr>
 			<th>아이디</th>
 			<th>이름</th>
@@ -39,6 +39,8 @@ try {
 		}
 		%>
 	</table>
+	<br />
+	<a href="insertMember.html">등록하기</a>
 </body>
 </html>
 <%
