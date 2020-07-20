@@ -7,12 +7,10 @@
 <%
 	int id = Integer.parseInt(request.getParameter("id"));
 /* 1. DB 드라이버 로딩 */
-Connection connection = null;
-try {
 	Class.forName("com.mysql.jdbc.Driver");
-	/* 2. 연결 맺기 */
 	String url = "jdbc:mysql://localhost:3306/WebMarketDB?useSSL=false", user = "root", password = "1234";
-	connection = DriverManager.getConnection(url, user, password);
+	/* 2. 연결 맺기 */
+try(Connection connection=DriverManager.getConnection(url, user, password)) {
 	/* 3. Statement문 생성 */
 	Statement statement = connection.createStatement();
 	/* 4. Query 실행 및 결과 처리 */

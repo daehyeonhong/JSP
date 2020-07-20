@@ -26,7 +26,7 @@ try {
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1px">
+	<table border="1">
 		<tr>
 			<th>아이디</th>
 			<th>이름</th>
@@ -44,5 +44,7 @@ try {
 <%
 	} catch (Exception e) {
 e.printStackTrace();
+} finally {
+connection.close();
 }
 %>

@@ -43,9 +43,10 @@
 		}
 	} catch (Exception e) {
 		e.printStackTrace();
+	} finally {
+		/* 6. 자원 해제 */
+		connection.close();
 	}
-	/* 6. 자원 해제 */
-	connection.close();
 	%>
 </body>
 </html>

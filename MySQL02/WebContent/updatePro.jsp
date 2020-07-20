@@ -41,6 +41,8 @@ String id = request.getParameter("id"), name = request.getParameter("name"), pas
 		}
 	} catch (Exception e) {
 		e.printStackTrace();
+	} finally {
+		connection.close();
 	}
 	%>
 </body>

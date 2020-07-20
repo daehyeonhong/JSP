@@ -47,6 +47,8 @@
 		}
 	} catch (Exception e) {
 		e.printStackTrace();
+	} finally {
+		connection.close();
 	}
 	%>
 </body>

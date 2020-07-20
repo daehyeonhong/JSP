@@ -4,13 +4,14 @@
 	pageEncoding="UTF-8"%>
 <%@include file="dbcpTest.jsp"%>
 <%
+	try {
 	request.setCharacterEncoding("UTF-8");
-String sql = "select*from member where id=?";
-String id = request.getParameter("id");
-PreparedStatement preparedStatement = connection.prepareStatement(sql);
-preparedStatement.setInt(1, Integer.parseInt(id));
-ResultSet resultSet = preparedStatement.executeQuery();
-if (resultSet.next()) {
+	String sql = "select*from member where id=?";
+	String id = request.getParameter("id");
+	PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	preparedStatement.setInt(1, Integer.parseInt(id));
+	ResultSet resultSet = preparedStatement.executeQuery();
+	if (resultSet.next()) {
 %>
 <!DOCTYPE html>
 <html>
@@ -31,22 +32,27 @@ if (resultSet.next()) {
 	</form>
 </body>
 <script type="text/javascript">
-function goList() {
-	location.href='memberListDBCP.jsp';
-}
-function check() {
-	let pwd1 = document.getElementById("passwd").value;
-	let pwd2 = document.getElementById("passwd2").value;
-	if (pwd1.length > 0) {
-		if (pwd1 != pwd2) {
-			document.getElementById("passwd").focus();
-			alert("비밀번호가 서로 다릅니다.")
-			return false;
+	function goList() {
+		location.href = 'memberListDBCP.jsp';
+	}
+	function check() {
+		let pwd1 = document.getElementById("passwd").value;
+		let pwd2 = document.getElementById("passwd2").value;
+		if (pwd1.length > 0) {
+			if (pwd1 != pwd2) {
+				document.getElementById("passwd").focus();
+				alert("비밀번호가 서로 다릅니다.")
+				return false;
+			}
 		}
 	}
-}
 </script>
 </html>
 <%
 	}
+} catch (Exception e) {
+e.printStackTrace();
+} finally {
+connection.close();
+}
 %>
