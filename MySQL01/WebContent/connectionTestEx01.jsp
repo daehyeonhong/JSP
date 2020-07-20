@@ -16,7 +16,7 @@ try {
 
 	Statement statement = connection.createStatement();
 
-	String sql = "select * from member where id=1";
+	String sql = "select*from member where id=1";
 
 	/* 쿼리 결과 받기 */
 	ResultSet resultSet = statement.executeQuery(sql);
