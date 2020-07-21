@@ -14,13 +14,15 @@
 	function addToCart() {
 		/* alert("카트에 담기"); */
 		/* 메세지 출력 메소드 */
-		let qty = prompt("수량을 입력하세요", "");
-		if (confirm("상품을 장바구니에 추가하시겠습니까?")) {
-			//document.addForm.submit();/* action경로로 이동처리 */
-			let id = document.getElementById("productId").value;
-			location.href = "addCart.jsp?id=" + id + "&qty=" + qty;
-		} else {
-			document.addForm.reset();/* 초기화 처리 */
+		let qty = prompt("수량을 입력하세요") === null ? 0 : qty;
+		if (qty !== 0) {
+			if (confirm('상품을 ' + qty + '개 장바구니에 추가하시겠습니까?')) {
+				//document.addForm.submit();/* action경로로 이동처리 */
+				let id = document.getElementById("productId").value;
+				location.href = "addCart.jsp?id=" + id + "&qty=" + qty;
+			} else {
+				document.addForm.reset();/* 초기화 처리 */
+			}
 		}
 	}
 </script>
@@ -90,6 +92,9 @@
 	<jsp:include page="footer.jsp" />
 	<%
 		}
+	if (resultSet != null) {
+	resultSet.close();
+	}
 	if (preparedStatement != null) {
 	preparedStatement.close();
 	}

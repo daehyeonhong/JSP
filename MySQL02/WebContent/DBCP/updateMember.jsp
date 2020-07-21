@@ -28,7 +28,8 @@
 %>
 <script>
 	alert("수정 완료!");
-	location.href = 'memberDetail.jsp?id=<%=id%>';
+	location.href = 'memberDetail.jsp?id=<%=id%>
+	';
 </script>
 <%
 	} catch (Exception e) {

@@ -1,4 +1,3 @@
-/**/
 show tables;
 
 select*from member;
@@ -13,14 +12,26 @@ select concat('P',cast(substr(max(p_id),2)as unsigned)+1) from product;
 
 select distinct(p_category)from product;
 
+--Category_Table 생성
 create table if not exists category(
-category varchar(20),
-primary key(category)
+seq int not null auto_increment,
+categoryName varchar(20) not null,
+description varchar(30),
+primary key(seq)
 )default CHARSET=UTF8;
 
+--drop table category;
+
 select*from category;
+--Category_Table 데이터 입력
+insert into category(categoryName,description)values('Smart Phone','Smart Phone');
+insert into category(categoryName,description)values('NoteBook','NoteBook');
+insert into category(categoryName,description)values('Tablet','Tablet');
 
 insert into category values('Smart Phone');
 insert into category values('NoteBook');
 insert into category values('Tablet');
 select*from product where p_id='P1234'
+
+update product set(p_name,p_unitPrice,p_description,p_category,p_manufacturer,p_unitsInStock,p_condition,p_fileName)values("1",2,"1","1","1","1",2,"1","1")where p_id="P_1239";
+select distinct(trim(categoryName))from category order by seq

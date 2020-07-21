@@ -46,9 +46,15 @@
 			</div>
 			<%
 				}
+
+			if (resultSet != null) {
+			resultSet.close();
+			}
+
 			if (preparedStatement != null) {
 			preparedStatement.close();
 			}
+
 			if (connection != null) {
 			connection.close();
 			}
