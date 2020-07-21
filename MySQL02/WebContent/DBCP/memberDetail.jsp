@@ -11,6 +11,7 @@
 	PreparedStatement preparedStatement = connection.prepareStatement(sql);
 	preparedStatement.setInt(1, Integer.parseInt(id_));
 	ResultSet resultSet = preparedStatement.executeQuery();
+	
 	if (resultSet.next()) {
 		int id = resultSet.getInt(1);
 		String name = resultSet.getString(2);
@@ -41,7 +42,9 @@
 	function check() {
 		let pwd1 = document.getElementById("passwd").value;
 		let pwd2 = document.getElementById("passwd2").value;
+		
 		if (pwd1.length > 0) {
+			
 			if (pwd1 != pwd2) {
 				document.getElementById("passwd").focus();
 				alert("비밀번호가 서로 다릅니다.")
@@ -51,6 +54,7 @@
 	}
 	function isDelete(id) {
 		let yesNo = confirm(id + "를 삭제할까요?");
+		
 		if (yesNo) {
 			location.href = 'memberDelete.jsp?id=' + id;
 		}

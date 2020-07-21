@@ -1,5 +1,5 @@
-<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="dbcpTest.jsp"%>
@@ -33,7 +33,7 @@
 </body>
 <script type="text/javascript">
 	function goList() {
-		location.href = 'memberListDBCP.jsp';
+		location.href = 'memberList.jsp';
 	}
 	function check() {
 		let pwd1 = document.getElementById("passwd").value;
