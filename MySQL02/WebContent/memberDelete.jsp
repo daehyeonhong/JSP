@@ -33,7 +33,7 @@
 		connection = DriverManager.getConnection(url, user, password);
 		/* 3. 쿼리 객체 생성 */
 		String sql = "delete from member where id=" + id;
-		System.out.printf("SQL: %s", sql);
+		System.out.printf("SQL: %s%n", sql);
 		Statement statement = connection.createStatement();
 		/* 4. 실행 및 결과 처리 */
 		int result = statement.executeUpdate(sql);

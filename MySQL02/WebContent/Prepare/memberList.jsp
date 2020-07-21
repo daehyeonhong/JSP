@@ -26,7 +26,7 @@ try {
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1">
+	<table border="">
 		<tr>
 			<th>아이디</th>
 			<th>이름</th>

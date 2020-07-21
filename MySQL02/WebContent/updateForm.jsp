@@ -5,12 +5,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	int id = Integer.parseInt(request.getParameter("id"));
 /* 1. DB 드라이버 로딩 */
 	Class.forName("com.mysql.jdbc.Driver");
 	String url = "jdbc:mysql://localhost:3306/WebMarketDB?useSSL=false", user = "root", password = "1234";
 	/* 2. 연결 맺기 */
 try(Connection connection=DriverManager.getConnection(url, user, password)) {
+	int id = Integer.parseInt(request.getParameter("id"));
 	/* 3. Statement문 생성 */
 	Statement statement = connection.createStatement();
 	/* 4. Query 실행 및 결과 처리 */

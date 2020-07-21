@@ -39,6 +39,7 @@ try {
 		}
 		%>
 	</table>
+
 </body>
 </html>
 <%
