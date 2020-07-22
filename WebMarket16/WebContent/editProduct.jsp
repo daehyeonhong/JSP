@@ -8,17 +8,28 @@
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <meta charset="UTF-8">
-<title>상품 편집</title>
-</head>
 <%
 	String edit = request.getParameter("edit");
 DecimalFormat priceDf = new DecimalFormat("\u00A4 #,###");
+if (edit.equals("update")) {
+	out.print("<title>상품 편집</title>");
+} else if (edit.equals("delete")) {
+	out.print("<title>상품 삭제</title>");
+}
 %>
+</head>
 <body>
 	<jsp:include page="menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">상품 편집</h1>
+			<%
+				if (edit.equals("update")) {
+				out.print("<h1 class=\"display-3\">상품 편집</h1>");
+			} else if (edit.equals("delete")) {
+				out.print("<h1 class=\"display-3\">상품 삭제</h1>");
+			}
+			%>
+			<!-- <h1 class="display-3">상품 편집</h1> -->
 		</div>
 	</div>
 	<div class="container">
@@ -70,5 +81,14 @@ DecimalFormat priceDf = new DecimalFormat("\u00A4 #,###");
 		<hr />
 	</div>
 	<jsp:include page="footer.jsp" />
+	<script type="text/javascript">
+		function deleteConfirm(id) {
+			if (confirm(id + "을(를) 삭제합니다!") === true) {
+				location.href = './deleteProduct.jsp?id=' + id;
+			} else {
+				return;
+			}
+		}
+	</script>
 </body>
 </html>

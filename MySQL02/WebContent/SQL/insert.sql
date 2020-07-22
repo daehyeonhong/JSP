@@ -20,7 +20,7 @@ description varchar(30),
 primary key(seq)
 )default CHARSET=UTF8;
 
---drop table category;
+drop table category;
 
 select*from category;
 --Category_Table 데이터 입력
@@ -35,3 +35,29 @@ select*from product where p_id='P1234'
 
 update product set(p_name,p_unitPrice,p_description,p_category,p_manufacturer,p_unitsInStock,p_condition,p_fileName)values("1",2,"1","1","1","1",2,"1","1")where p_id="P_1239";
 select distinct(trim(categoryName))from category order by seq
+
+select p_id from product where p_id='P1234'
+
+/* 배송 테이블 */
+create table sale(
+seq int not null auto_increment,
+saleDate varchar(20),
+sessionId  varchar(50),
+productId varchar(20),
+unitPrice int,
+saleQty int,
+primary key(seq)
+)default CHARSET=UTF8;
+/* 주문 테이블 */
+create table delivery(
+seq int not null auto_increment,
+sessionId varchar(50),
+name varchar(20),
+deliveryDate varchar(20),
+nation varchar(20),
+zipCode varchar(5),
+address varchar(200),
+primary key(seq)
+)default CHARSET=UTF8;
+desc sale
+desc delivery

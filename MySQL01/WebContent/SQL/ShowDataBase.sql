@@ -32,3 +32,7 @@ select * from member;
 /* delect */
 delete from member where id=4;
 select*from member;
+
+desc product;
+
+alter table product change unitsInStock p_unitsInStock int(11)

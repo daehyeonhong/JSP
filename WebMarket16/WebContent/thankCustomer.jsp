@@ -1,6 +1,7 @@
 <%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="dbconn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,6 +47,15 @@
 		shipping_cartId = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 		} */
 		}
+	}
+	/* 오늘의 과제 */
+	/* [Sale_Table], [Delivery_Table]에 저장. 날짜 2020/07/22 */
+	try {
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+
 	}
 	%>
 	<jsp:include page="menu.jsp" />

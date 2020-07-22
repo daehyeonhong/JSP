@@ -1,9 +1,10 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="dto.Product"%>
-<%@page import="dao.ProductRepository"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="dbconn.jsp"%>
 <%
 	/* parameter로 넘어온 [ID_Value] */
 String id = request.getParameter("id");
@@ -15,27 +16,34 @@ if (id == null || id.trim().equals("")) {/* [ID_Value]가 넘어오지 않았으
 }
 
 /* [ID_Value]가 존재하면 상품처리 객체 생성 */
-ProductRepository dao = ProductRepository.getInstance();
+String sql = "select*from product where p_id=?";
+PreparedStatement preparedStatement = connection.prepareStatement(sql);
+preparedStatement.setString(1, id);
+ResultSet resultSet = preparedStatement.executeQuery();
+
+Product product = null;
+if (resultSet.next()) {
+	product = new Product();
+	product.setProductId(id);
+	product.setPname(resultSet.getString("p_name"));
+	product.setUnitPrice(resultSet.getInt("p_unitPrice"));
+	product.setDescription(resultSet.getString("p_description"));
+	product.setCategory(resultSet.getString("p_category"));
+	product.setManufacturer(resultSet.getString("p_manufacturer"));
+	product.setUnitsInStock(resultSet.getLong("p_unitsInStock"));
+	product.setCondition(resultSet.getString("p_condition"));
+	product.setFilename(resultSet.getString("p_fileName"));
+}
+
 /* 해당 ID에 맞는 상품정보 얻기 */
-Product product = dao.getProductById(id);
 
 if (product == null) {/* 해당 ID로 상품이 존재하지 않으면 ErrorPage로 이동 */
 	response.sendRedirect("exceptionNoProductId.jsp");
 	return;
 }
 
-/* 상품 전체 리스트 받기 */
-List<Product> goodList = dao.getAllProducts();
 /* 상품 정보 담을 객체 생성 */
-Product goods = new Product();
-
-/* 리스트 상품 정보 얻은 후 ID가 같으면 반복 종료 */
-for (int i = 0; i < goodList.size(); i++) {
-	goods = goodList.get(i);
-	if (goods.getProductId().equals(id)) {
-		break;
-	}
-}
+Product goods = product;
 
 /* 세션에 cartList가 있는지 여부 확인
 없으면 cartList를 생성하여 session에 저장 */
@@ -68,6 +76,9 @@ if (cnt == 0) {
 System.out.println("상품수량: " + goods.getQuantity());
 /* 상세페이지로 이동시 원래 상품 정보 출력 */
 /* response.sendRedirect("product.jsp?id=" + id); */
+resultSet.close();
+preparedStatement.close();
+connection.close();
 response.sendRedirect("products.jsp?id=" + id);
 /* request.setAttribute("id", id);
 RequestDispatcher requestDispatcher = request.getRequestDispatcher("product.jsp?id=" + id);

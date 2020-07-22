@@ -1,8 +1,11 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.util.List"%>
 <%@page import="dto.Product"%>
 <%@page import="dao.ProductRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="dbconn.jsp"%>
 <%
 	String id = request.getParameter("id");
 /* parameter로 넘어온 ID정보가 없으면 */
@@ -13,10 +16,16 @@ if (id == null || id.trim().equals("")) {
 }
 
 /* parameter로 넘어온 ID정보가 있을 때 */
-ProductRepository dao = ProductRepository.getInstance();
+String sql = "select p_id from product where p_id=?";
+PreparedStatement preparedStatement = connection.prepareStatement(sql);
+preparedStatement.setString(1, id);
+Product product = null;
+ResultSet resultSet = preparedStatement.executeQuery();
+if (resultSet.next()) {
+	product = new Product();
+}
 
 /* 상품정보 얻기 */
-Product product = dao.getProductById(id);
 
 /* 해당 상품 정보가 없으면 ErrorPage로 이동 */
 if (product == null) {

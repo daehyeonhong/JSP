@@ -9,6 +9,7 @@ pageEncoding="UTF-8"%>
       <a class="navbar-brand" href="./boards.jsp">게시글 목록</a>
       <a class="navbar-brand" href="./cart.jsp">장바구니</a>
       <a class="navbar-brand" href="./editProduct.jsp?edit=update">수정</a>
+      <a class="navbar-brand" href="./editProduct.jsp?edit=delete">삭제</a>
       <a class="navbar-brand" href="./addCategory.jsp">카테고리 등록</a>
     </div>
   </div>

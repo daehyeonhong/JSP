@@ -13,11 +13,13 @@ try {
 	preparedStatement.setString(1, categoryName);
 	preparedStatement.setString(2, description);
 	int result = preparedStatement.executeUpdate();
+
 	if (result > 0) {
 		out.print("<script>alert('" + categoryName + " 추가 완료!');</script>");
 		connection.commit();
 	} else {
 		out.print("<script>alert('카테고리 추가 실패!');</script>");
+		connection.rollback();
 	}
 } catch (Exception e) {
 	e.printStackTrace();

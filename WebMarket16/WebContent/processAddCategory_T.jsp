@@ -4,7 +4,8 @@
 <%@include file="dbconn.jsp"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String categoryName = request.getParameter("categoryName"), description = request.getParameter("description");
+String categoryName = /* request.getParameter("categoryName") */"a",
+		description = /* request.getParameter("description") */"b";
 %>
 
 <script type="text/javascript">
@@ -12,9 +13,10 @@ String categoryName = request.getParameter("categoryName"), description = reques
 		let checkAddCate = confirm(('정말 ' + categoryName
 				+ '을(를) 추가 하시겠습니까?\n\r설명:' + description));
 		if (!checkAddCate) {
-			alert('이게 나오면 니 잘못1');
+			alert('location.href전');
 			location.href = "./addCategory.jsp";
-			alert('이게 나오면 니 잘못2');
+			return;
+			alert('location.href후');
 		}
 	}
 </script>

@@ -37,12 +37,21 @@ String cartId = session.getId();
 		if (qty < 0) {
 			qty = 0;
 		}
+		
+		if(qty==0){
+				if (confirm(name + "의 수량을 " + qty + "개로 변경하시겠습니까?\n\r상품 수량이 없으면 장바구니에서 삭제됩니다.")) {
+					location.href = "./removeCart.jsp?id="+id;
+				} else {
+					location.href = "cart.jsp";
+				 }
+		}else{
 		if (confirm(name + "의 수량을 " + qty + "개로 변경하시겠습니까?")) {
 			location.href = "changeCart.jsp?id=" + id + "&qty=" + qty;
 		} else {
 			document.addForm.reset();
 		}
 	}
+		}
 
 	function changeNumber(id) {
 		let btn = document.getElementById(id);
