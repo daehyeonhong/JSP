@@ -31,7 +31,8 @@
 				<label class="col-sm-2">배송일</label>
 				<div class="col-sm-3">
 					<input type="date" name="shippingDate" id="shippingDate"
-						class="form-control" onchange="checkValue()" />
+						class="form-control" onchange="checkValue()"
+						placeholder="yyyy/mm/dd" />
 				</div>
 			</div>
 
