@@ -68,24 +68,21 @@
 			</div>
 		</form>
 	</div>
-	<!-- 	<script type="text/javascript">
+	<script type="text/javascript">
 		function checkValue() {
-			let currTime = Number(new Date());
-			alert(currTime);
-			let curr = new Date();
-			let currY = curr.getFullYear();
-			let currM = curr.getMonth();
-			let currD = curr.getDay();
-			let setTime = Number(new Date(document
-					.getElementById("shippingDate").value));
-			alert(setTime);
-			if (currTime > setTime) {
-				alert("현재 날짜" + currY + "/" + currM + "/" + currD
-						+ "보다 이전 날짜를 선택할 수 없습니다.");
+			let currTime = new Date();
+			let currY = currTime.getFullYear();
+			let currM = currTime.getMonth() + 1;
+			let currD = currTime.getDate();
+			let setTime = new Date(
+					document.getElementById("shippingDate").value);
+			if (Number(currTime) > Number(setTime)) {
+				alert("현재 날짜 " + currY + "/" + currM + "/" + currD
+						+ " 보다 이전 날짜를 선택할 수 없습니다.");
 				document.getElementById("shippingDate").value = "";
 			}
 		}
-	</script> -->
+	</script>
 	<jsp:include page="footer.jsp" />
 </body>
 </html>

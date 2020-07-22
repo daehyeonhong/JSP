@@ -93,8 +93,8 @@
 			connection.rollback();
 		}
 	} catch (Exception e) {
+		out.print("<em>SQLException: " + e.getMessage() + "</em>");
 		connection.rollback();
-		e.printStackTrace();
 	} finally {
 		connection.setAutoCommit(true);
 		connection.close();
