@@ -55,9 +55,14 @@ sessionId varchar(50),
 name varchar(20),
 deliveryDate varchar(20),
 nation varchar(20),
-zipCode varchar(5),
+zipCode varchar(10),
 address varchar(200),
 primary key(seq)
 )default CHARSET=UTF8;
 desc sale
-desc delivery
+desc delivery;
+select*from sale;
+select*from delivery;
+drop table sale;
+drop table delivery;
+insert into sale(saleDate,sessionId,productId,unitPrice,saleQty)values("1","2","3","4","5")

@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,12 +27,11 @@
 					<input type="text" name="name" class="form-control" />
 				</div>
 			</div>
-
 			<div class="form-group row">
 				<label class="col-sm-2">배송일</label>
 				<div class="col-sm-3">
-					<input type="text" name="shippingDate" class="form-control"
-						placeholder="yyyy/mm/dd" />
+					<input type="date" name="shippingDate" id="shippingDate"
+						class="form-control" onchange="checkValue()" />
 				</div>
 			</div>
 
@@ -66,6 +67,24 @@
 			</div>
 		</form>
 	</div>
+	<!-- 	<script type="text/javascript">
+		function checkValue() {
+			let currTime = Number(new Date());
+			alert(currTime);
+			let curr = new Date();
+			let currY = curr.getFullYear();
+			let currM = curr.getMonth();
+			let currD = curr.getDay();
+			let setTime = Number(new Date(document
+					.getElementById("shippingDate").value));
+			alert(setTime);
+			if (currTime > setTime) {
+				alert("현재 날짜" + currY + "/" + currM + "/" + currD
+						+ "보다 이전 날짜를 선택할 수 없습니다.");
+				document.getElementById("shippingDate").value = "";
+			}
+		}
+	</script> -->
 	<jsp:include page="footer.jsp" />
 </body>
 </html>

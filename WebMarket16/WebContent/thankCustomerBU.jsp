@@ -40,12 +40,9 @@
 			if (cookieName.equals("Shipping_country")) {
 		shipping_country = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 			}
-			if (cookieName.equals("Shipping_addressName")) {
-		shipping_addressName = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
-			}
+
 		}
 	}
-	System.out.println(shipping_shippingDate);
 	/* 오늘의 과제 */
 	/* [Sale_Table], [Delivery_Table]에 저장. 날짜 2020/07/22 */
 	try {
@@ -53,9 +50,9 @@
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = simpleDateFormat.parse(shipping_shippingDate);
 		simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		String dateStr = simpleDateFormat.format(date);
+		String date_Str = simpleDateFormat.format(date);
 		String sql = "insert into sale(saleDate,sessionId,productId,unitPrice,saleQty)values(?,?,?,?,?)";
-		PreparedStatement preparedStatementSale = connection.prepareStatement(sql);
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
 		/* Sale_Table 정보 얻기 */
 		List<Product> cartList = (List<Product>) session.getAttribute("cartList");
@@ -63,37 +60,35 @@
 		if (cartList == null) {
 			cartList = new ArrayList<Product>();
 		}
-		/* 상품 정보 하나씩 저장 */
-		int resultSale = 0;
 		int cnt = 0;
-		int i = 0;
-		for (i = 0; i < cartList.size(); i++) {
+		int checkCnt = 0;
+		/* 상품 정보 하나씩 저장 */
+		for (int i = 0; i < cartList.size(); i++) {
 			Product product = cartList.get(i);
-			preparedStatementSale.setString(1, dateStr);
-			System.out.println(1 + i + "번" + dateStr);
-			preparedStatementSale.setString(2, shipping_cartId);
-			preparedStatementSale.setString(3, product.getProductId());
-			preparedStatementSale.setInt(4, product.getUnitPrice());
-			preparedStatementSale.setInt(5, product.getQuantity());
-			resultSale = preparedStatementSale.executeUpdate();
+			preparedStatement.setString(1, date_Str);
+			System.out.print(date);
+			preparedStatement.setString(2, shipping_cartId);
+			preparedStatement.setString(3, product.getProductId());
+			preparedStatement.setInt(4, product.getUnitPrice());
+			preparedStatement.setInt(5, product.getQuantity());
+			int resultSale = preparedStatement.executeUpdate();
+			if (resultSale > 0) {
+		checkCnt++;
+			}
 			cnt++;
 		}
 		sql = "insert into delivery(sessionId,name,deliveryDate,nation,zipCode,address)values(?,?,?,?,?,?)";
-		PreparedStatement preparedStatementDelivery = connection.prepareStatement(sql);
-		preparedStatementDelivery.setString(1, shipping_cartId);
-		preparedStatementDelivery.setString(2, shipping_name);
-		preparedStatementDelivery.setString(3, dateStr);
-		preparedStatementDelivery.setString(4, shipping_country);
-		preparedStatementDelivery.setString(5, shipping_zipCode);
-		preparedStatementDelivery.setString(6, shipping_addressName);
-		int resultDel = preparedStatementDelivery.executeUpdate();
-		if (resultDel > 0 && resultSale > 0 && i == cnt) {
+		preparedStatement.setString(1, shipping_cartId);
+		preparedStatement.setString(2, shipping_name);
+		preparedStatement.setString(3, date_Str);
+		preparedStatement.setString(4, shipping_country);
+		preparedStatement.setString(5, shipping_zipCode);
+		preparedStatement.setString(6, shipping_addressName);
+		int resultDel = preparedStatement.executeUpdate();
+		if (resultDel > 0 && checkCnt == cnt) {
 			connection.commit();
-		} else {
-			connection.rollback();
 		}
 	} catch (Exception e) {
-		connection.rollback();
 		e.printStackTrace();
 	} finally {
 		connection.setAutoCommit(true);
