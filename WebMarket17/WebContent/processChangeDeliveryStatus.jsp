@@ -6,9 +6,6 @@
 	request.setCharacterEncoding("UTF-8");
 String sessionId = request.getParameter("id"), status = request.getParameter("status").trim(),
 		productId = request.getParameter("productId");
-System.out.println("sessionId:\n" + sessionId);
-System.out.println("status:\n" + status);
-System.out.println("productId:\n" + productId);
 int statusNum = 0;
 switch (status) {
 case "주문 완료":
@@ -38,7 +35,7 @@ if (statusNum != 0) {
 	preparedStatement.setString(3, sessionId);
 	int result = preparedStatement.executeUpdate();
 	if (result > 0) {
-		out.print("<script>alert('축하한다 짜식')</script>");
+		out.print("<script>alert(\"변경 완료\")</script>");
 		out.print("<script>location.href='./deliveryList.jsp'</script>");
 	}
 }

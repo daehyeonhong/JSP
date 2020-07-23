@@ -93,11 +93,12 @@
 	<jsp:include page="footer.jsp" />
 	<script type="text/javascript">
 		function pupu(id, productId, status) {
-			let yesNo = confirm("정말 " + status + " 상태로 변경하시겠습니까?");
+			let yesNo = confirm("정말 [" + status + "] 상태로 변경하시겠습니까?");
 			if (yesNo) {
 				location.href = "processChangeDeliveryStatus.jsp?id=" + id
 						+ "&productId=" + productId + "&status=" + status;
 			} else {
+				alert("요청이 취소되었습니다");
 				location.href = "deliveryList.jsp";
 			}
 		}
