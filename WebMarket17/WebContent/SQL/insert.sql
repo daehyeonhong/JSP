@@ -41,7 +41,7 @@ select p_id from product where p_id='P1234'
 
 alter table sale add column status int;
 
-update sale set status=1 where productId=;
+update sale set status=3 where productId=;
 
 create table status(
 statusNumber int not null auto_increment,

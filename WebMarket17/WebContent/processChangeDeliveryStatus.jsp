@@ -4,7 +4,7 @@
 <%@include file="DBConnection.jsp"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String sessionId = request.getParameter("id"), status = request.getParameter("status"),
+String sessionId = request.getParameter("id"), status = request.getParameter("status").trim(),
 		productId = request.getParameter("productId");
 System.out.println("sessionId:\n" + sessionId);
 System.out.println("status:\n" + status);
@@ -28,15 +28,18 @@ case "수령 완료":
 	break;
 default:
 	statusNum = 0;
+	break;
 }
-String sql = "update sale set status=? where productId=? and sessionId=?";
-PreparedStatement preparedStatement = connection.prepareStatement(sql);
-preparedStatement.setInt(1, statusNum);
-preparedStatement.setString(2, productId);
-preparedStatement.setString(3, sessionId);
-int result = preparedStatement.executeUpdate();
-if (result > 0) {
-	out.print("<script>alert('축하한다 짜식')</script>");
-	out.print("<script>location.href='./deliveryList.jsp'</script>");
+if (statusNum != 0) {
+	String sql = "update sale set status=? where productId=? and sessionId=?";
+	PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	preparedStatement.setInt(1, statusNum);
+	preparedStatement.setString(2, productId);
+	preparedStatement.setString(3, sessionId);
+	int result = preparedStatement.executeUpdate();
+	if (result > 0) {
+		out.print("<script>alert('축하한다 짜식')</script>");
+		out.print("<script>location.href='./deliveryList.jsp'</script>");
+	}
 }
 %>
