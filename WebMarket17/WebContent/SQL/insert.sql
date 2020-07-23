@@ -23,6 +23,7 @@ primary key(seq)
 drop table category;
 
 select*from category;
+
 --Category_Table 데이터 입력
 insert into category(categoryName,description)values('Smart Phone','Smart Phone');
 insert into category(categoryName,description)values('NoteBook','NoteBook');
@@ -89,17 +90,56 @@ desc sale
 desc delivery;
 
 select*from sale;
+select*from status;
 select*from delivery;
 
 drop table sale;
 drop table delivery;
 
 insert into sale(saleDate,sessionId,productId,unitPrice,saleQty)values("1","2","3","4","5")
+insert into status(status)values('주문 완료');
+insert into status(status)values('배송 접수');
+insert into status(status)values('배송 중');
+insert into status(status)values('배송 완료');
+insert into status(status)values('수령 완료');
 
 
 select*from sale s,delivery d where s.sessionId=d.sessionId;
 select s.sessionId as '주문번호',s.saleDate as '주문일',s.productId as '제품 번호',p.p_name as '제품 명',s.unitPrice as '제품 가격',s.saleQty as '구매 수량',d.name as '구매자 명',d.deliveryDate as '구매일',d.nation as '배송 국가',d.zipCode as '우편번호',d.address as '배송 주소' from sale s,delivery d,product p where s.sessionId=d.sessionId and s.productId=p.p_id;
 
+select d.seq,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status 
+					from sale s,delivery d,status st 
+					where s.sessionId=d.sessionId 
+					and s.status=st.statusNumber;
 
-  select d.seq,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from sale s,delivery d,product p,status st where s.sessionId=d.sessionId and
-      s.productId=p.p_id and s.status=st.statusNumber;
+
+select d.seq,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from sale s,delivery d,product p,status st where s.sessionId=d.sessionId and
+s.productId=p.p_id and s.status=st.statusNumber;
+      
+select status from status;
+/* 기존 테이블 삭제 */
+drop table member
+
+/* 새 테이블 생성 */
+create table member(
+id varchar(10) not null,
+password varchar(10) not null,
+name varchar(10) not null,
+gender varchar(4),
+birth varchar(10),
+mail varchar(30),
+phone varchar(20),
+postcode varchar(5),
+address varchar(200),
+detailAddress varchar(100),
+extraAddress varchar(50),
+regist_day varchar(50),
+primary key(id)
+)default CHARSET=UTF8;
+update sale set status=2 where productId='P1235' and sessionId='FDFE9437BF8171A65EC2D60277B9C3AA'
+update sale set status=3 where productId='P1235' and sessionId='FDFE9437BF8171A65EC2D60277B9C3AA';
+
+select*from status
+select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from sale s,delivery d,status st where s.sessionId=d.sessionId and s.status=st.statusNumber
+select*from sale
+select*from member

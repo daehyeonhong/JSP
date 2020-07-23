@@ -30,9 +30,14 @@
 		<c:forEach var="row" items="${resultSet.rowsByIndex}" varStatus="i">
 			<tr>
 				<td>${i.count}</td>
-				<c:forEach var="column" items="${row}">
+				<c:forEach var="column" items="${row}" varStatus="j">
 					<td><c:if test="${column!=null}">
-							<c:out value="${column}" />
+							<c:if test="${j.index==0}">
+								<a href="sql_Ex03.jsp?id=${column}">${column}</a>
+							</c:if>
+							<c:if test="${j.index!=0}">
+								<c:out value="${column}" />
+							</c:if>
 						</c:if> <c:if test="${column==null}">
 							&nbsp;
 						</c:if></td>
