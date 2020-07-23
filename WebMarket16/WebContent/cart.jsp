@@ -1,8 +1,8 @@
 <%@page import="java.net.URLEncoder"%>
-<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.Product"%>
 <%@page import="java.util.List"%>
+<%@include file="numberFormat.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,8 +10,8 @@
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <%
-	DecimalFormat priceDf = new DecimalFormat("\u00A4 #,###");
-DecimalFormat qntDf = new DecimalFormat("#,###");
+	priceFormat = new DecimalFormat("\u00A4 #,###");
+numberFormat = new DecimalFormat("#,###");
 String cartId = session.getId();
 %>
 <!-- sessionId -->
@@ -100,8 +100,8 @@ String cartId = session.getId();
 					String id = product.getProductId();
 					int total = product.getUnitPrice() * product.getQuantity();/* 단가 * 수량 = 금액 */
 					sum = sum + total;/* sum(총금액) = 개별 상품의 가격 합. */
-					String price = priceDf.format(product.getUnitPrice()), qnt = qntDf.format(product.getQuantity()),
-					totalDf = priceDf.format(total);
+					String price = priceFormat.format(product.getUnitPrice()), qnt = numberFormat.format(product.getQuantity()),
+					totalDf = priceFormat.format(total);
 					String qty = String.valueOf(product.getQuantity());
 				%>
 				<tr>

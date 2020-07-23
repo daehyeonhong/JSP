@@ -4,7 +4,7 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@page errorPage="exceptionNoProductId.jsp"%><!DOCTYPE html>
-<%@include file="dbconn.jsp"%>
+<%@include file="DBConnectionDBCP.jsp"%>
 <html>
 <head>
 <meta charset="UTF-8" />

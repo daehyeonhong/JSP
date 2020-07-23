@@ -5,7 +5,7 @@
 <%@page import="dao.ProductRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="dbconn.jsp"%>
+<%@include file="DBConnectionDBCP.jsp"%>
 <%
 	String id = request.getParameter("id");
 /* parameter로 넘어온 ID정보가 없으면 */
@@ -46,4 +46,16 @@ for (int i = 0; i < cartList.size(); i++) {
 
 /* 삭제한 내용 확인을 위해 cartPage로 이동 */
 response.sendRedirect("cart.jsp");
+
+if (resultSet != null) {
+	resultSet.close();
+}
+
+if (preparedStatement != null) {
+	preparedStatement.close();
+}
+
+if (connection != null) {
+	connection.close();
+}
 %>

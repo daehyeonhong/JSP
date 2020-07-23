@@ -1,8 +1,8 @@
-<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@include file="dbconn.jsp"%>
+<%@include file="DBConnectionDBCP.jsp"%>
+<%@include file="numberFormat.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>

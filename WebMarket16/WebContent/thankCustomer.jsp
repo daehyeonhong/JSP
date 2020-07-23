@@ -1,5 +1,4 @@
 <%@page import="java.util.Date"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.Product"%>
@@ -7,7 +6,8 @@
 <%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="dbconn.jsp"%>
+<%@include file="DBConnectionDBCP.jsp"%>
+<%@include file="numberFormat.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,27 +50,23 @@
 	/* [Sale_Table], [Delivery_Table]에 저장. 날짜 2020/07/22 */
 	try {
 		connection.setAutoCommit(false);
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = simpleDateFormat.parse(shipping_shippingDate);
-		simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		String dateStr = simpleDateFormat.format(date);
+		Date delDate = readDateFormat.parse(shipping_shippingDate);
+		String deliveryDate = writeDateFormat.format(delDate);
+		String currDate = writeDateFormat.format(new Date());
 		String sql = "insert into sale(saleDate,sessionId,productId,unitPrice,saleQty)values(?,?,?,?,?)";
 		PreparedStatement preparedStatementSale = connection.prepareStatement(sql);
 
 		/* Sale_Table 정보 얻기 */
 		List<Product> cartList = (List<Product>) session.getAttribute("cartList");
 
-		if (cartList == null) {
-			cartList = new ArrayList<Product>();
-		}
 		/* 상품 정보 하나씩 저장 */
 		int resultSale = 0;
 		int cnt = 0;
 		int i = 0;
 		for (i = 0; i < cartList.size(); i++) {
 			Product product = cartList.get(i);
-			preparedStatementSale.setString(1, dateStr);
-			System.out.println(1 + i + "번" + dateStr);
+			preparedStatementSale.setString(1, currDate);
+			System.out.println(1 + i + "번" + currDate);
 			preparedStatementSale.setString(2, shipping_cartId);
 			preparedStatementSale.setString(3, product.getProductId());
 			preparedStatementSale.setInt(4, product.getUnitPrice());
@@ -78,11 +74,12 @@
 			resultSale = preparedStatementSale.executeUpdate();
 			cnt++;
 		}
+
 		sql = "insert into delivery(sessionId,name,deliveryDate,nation,zipCode,address)values(?,?,?,?,?,?)";
 		PreparedStatement preparedStatementDelivery = connection.prepareStatement(sql);
 		preparedStatementDelivery.setString(1, shipping_cartId);
 		preparedStatementDelivery.setString(2, shipping_name);
-		preparedStatementDelivery.setString(3, dateStr);
+		preparedStatementDelivery.setString(3, deliveryDate);
 		preparedStatementDelivery.setString(4, shipping_country);
 		preparedStatementDelivery.setString(5, shipping_zipCode);
 		preparedStatementDelivery.setString(6, shipping_addressName);
@@ -97,7 +94,9 @@
 		connection.rollback();
 	} finally {
 		connection.setAutoCommit(true);
-		connection.close();
+		if (connection != null) {
+			connection.close();
+		}
 	}
 	%>
 	<jsp:include page="menu.jsp" />
@@ -119,9 +118,16 @@
 		</p>
 	</div>
 	<div class="container">
-		<p>
-			<a href="./products.jsp" class="btn btn-secondary">&laquo;상품 목록</a>
-		</p>
+		<div class="row">
+			<table width="100%">
+				<tr>
+					<td align="left"><a href="./products.jsp"
+						class="btn btn-secondary" onclick="deleteCart()">&laquo;상품 목록</a></td>
+					<td align="right"><a href="./deliveryList.jsp"
+						class="btn btn-primary">배송 목록&raquo;</a></td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	<%
 		/* session정보 삭제 */

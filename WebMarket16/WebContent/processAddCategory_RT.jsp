@@ -1,7 +1,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="dbconn.jsp"%>
+<%@include file="DBConnectionDBCP.jsp"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 String categoryName = request.getParameter("categoryName"), description = request.getParameter("description");

@@ -4,7 +4,7 @@
 <%@page import="dto.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="dbconn.jsp"%>
+<%@include file="DBConnectionDBCP.jsp"%>
 <%
 	/* parameter로 넘어온 [ID_Value] */
 String id = request.getParameter("id");

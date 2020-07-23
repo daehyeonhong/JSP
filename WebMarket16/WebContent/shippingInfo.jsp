@@ -1,3 +1,5 @@
+<%@page import="dto.Product"%>
+<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,6 +12,12 @@
 <title>배송 정보</title>
 </head>
 <body>
+	<%
+		List<Product> cartList = (List<Product>) session.getAttribute("cartList");
+	if ((cartList == null) || (cartList.get(0) == null)) {
+		response.sendRedirect("exceptionEmptyCart.jsp");
+	}
+	%>
 	<jsp:include page="menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
@@ -24,36 +32,40 @@
 			<div class="form-group row">
 				<label class="col-sm-2">성명</label>
 				<div class="col-sm-3">
-					<input type="text" name="name" class="form-control" />
+					<input type="text" name="name" class="form-control"
+						required="required" />
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2">배송일</label>
+				<label class="col-sm-2">배송 예정일</label>
 				<div class="col-sm-3">
 					<input type="date" name="shippingDate" id="shippingDate"
 						class="form-control" onchange="checkValue()"
-						placeholder="yyyy/mm/dd" />
+						placeholder="yyyy/mm/dd" required="required" />
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<label class="col-sm-2">국가</label>
 				<div class="col-sm-3">
-					<input type="text" name="country" class="form-control" />
+					<input type="text" name="country" class="form-control"
+						required="required" />
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<label class="col-sm-2">우편번호</label>
 				<div class="col-sm-3">
-					<input type="text" name="zipCode" class="form-control" />
+					<input type="text" name="zipCode" class="form-control"
+						required="required" />
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<label class="col-sm-2">주소</label>
 				<div class="col-sm-5">
-					<input type="text" name="addressName" class="form-control" />
+					<input type="text" name="addressName" class="form-control"
+						required="required" />
 				</div>
 			</div>
 
@@ -61,8 +73,9 @@
 				<div class="col-sm-offset-2 col-sm-10">
 					<a href="./cart.jsp?cartId=<%=request.getParameter("cartId")%>"
 						class="btn btn-secondary" role="button">이전</a> <input
-						type="submit" class="btn btn-primary" value="등록" /> <a
-						href="./checkOutCancelled.jsp" class="btn btn-secondary"
+						type="submit" class="btn btn-primary" value="등록"
+						onclick="checkProduct(<%=session.getAttribute("cartList")%>)" />
+					<a href="./checkOutCancelled.jsp" class="btn btn-secondary"
 						role="button">취소</a>
 				</div>
 			</div>

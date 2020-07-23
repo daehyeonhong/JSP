@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.Product"%>
@@ -7,7 +9,9 @@
 	pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-
+Date saleDate = new Date();
+SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+String date = simpleDateFormat.format(saleDate);
 String shipping_cartId = session.getId(), shipping_name = "", shipping_shippingDate = "", shipping_country = "",
 		shipping_zipCode = "", shipping_addressName = "";
 DecimalFormat priceDf = new DecimalFormat("\u00A4 #,###");
@@ -59,7 +63,7 @@ if (cookies != null) {
 			</div>
 			<div class="col-4" align="right">
 				<p>
-					<em>배송일: <%=shipping_shippingDate%><br /></em>
+					<em>주문일: <%=date%></em><br /> <em>배송 예정일: <%=shipping_shippingDate%></em><br />
 				</p>
 			</div>
 		</div>

@@ -4,7 +4,7 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@include file="dbconn.jsp"%>
+<%@include file="DBConnectionDBCP.jsp"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 String realFoler = "/resources/images";
