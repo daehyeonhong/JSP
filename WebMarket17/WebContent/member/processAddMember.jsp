@@ -28,29 +28,12 @@ Timestamp timestamp = new Timestamp(currentDateTime.getTime());
 <title>JSTL SQL</title>
 </head>
 <body>
-	<%=currentDateTime%><br />
-	<%=sqlDate%><br />
-	<%=timestamp%><br />
-	<%=id%><br />
-	<%=password%><br />
-	<%=name%><br />
-	<%=gender%><br />
-	<%=birthyy%><br />
-	<%=birthmm%><br />
-	<%=birthdd%><br />
-	<%=mail1%><br />
-	<%=mail2%><br />
-	<%=phone%><br />
-	<%=postcode%><br />
-	<%=address%><br />
-	<%=detailAddress%><br />
-	<%=extraAddress%><br />
 	<c:catch var="except">
 		<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
 			url="jdbc:mysql://localhost:3306/WebMarketDB?useSSL=false"
 			user="root" password="1234" />
 		<sql:update dataSource="${dataSource}" var="resultSet">
-		update values(?,?,?,?,?,?,?,?,?,?,?,?)
+		insert into member (id,password,name,gender,birth,mail,phone,postcode,address,detailAddress,extraAddress,regist_day) values(?,?,?,?,?,?,?,?,?,?,?,?)
 		<sql:param value="<%=id%>" />
 			<sql:param value="<%=password%>" />
 			<sql:param value="<%=name%>" />

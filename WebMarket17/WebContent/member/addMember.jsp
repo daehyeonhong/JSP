@@ -30,12 +30,13 @@
 							<table width="100%">
 								<tr>
 									<td align="left"><input type="button" value="중복확인"
-										class="btn btn-secondary col-sm-4" onclick="idCheck()" /></td>
+										class="btn btn-secondary col-sm-4" onclick="checkId()"
+										id="chkId" /></td>
 								</tr>
 								<tr>
 									<td align="left"><input type="hidden" value="ID변경"
-										id="changeId" class="btn btn-warning col-sm-4"
-										onclick="changeIds()" /></td>
+										id="updId" class="btn btn-warning col-sm-4"
+										onclick="updateId()" /></td>
 								</tr>
 							</table>
 						</div>
@@ -146,7 +147,7 @@
 
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-4">
-					<input type="submit" id="submit1" value="등록" disabled="disabled"
+					<input type="submit" id="submitBtn" value="등록" disabled="disabled"
 						class="btn btn-primary" /> <input type="reset"
 						onclick="resetType()" value="취소" class="btn btn-warning" />
 				</div>
@@ -159,23 +160,25 @@
 	<script>
 		function resetType() {
 			document.newMember.id.removeAttribute("readonly");
-			document.newMember.changeId.setAttribute("type", "hidden");
-			document.newMember.submit1.setAttribute("disabled", "disabled");
+			document.newMember.updId.setAttribute("type", "hidden");
+			document.newMember.submitBtn.setAttribute("disabled", "disabled");
+			document.newMember.chkId.removeAttribute("disabled");
 		}
-		function changeIds() {
-			document.newMember.changeId.setAttribute("type", "hidden");
-			document.newMember.submit.setAttribute("disabled", "disabled");
+		function updateId() {
+			document.newMember.chkId.setAttribute("type", "button");
+			document.newMember.updId.setAttribute("type", "hidden");
+			document.newMember.submitBtn.setAttribute("disabled", "disabled");
 			document.newMember.id.removeAttribute("readonly");
 			document.getElementById("id").value = "";
 			document.getElementById("id").focus();
 		}
 
-		function idCheck() {
+		function checkId() {
 			/* 과제 */
 			let id = document.getElementById("id").value.trim();
 			if (id != "") {
 				alert('아이디: ' + id);
-				window.open('idCheckDBConnect.jsp?id=' + id, "ID체크",
+				window.open('idCheck.jsp?id=' + id, "ID체크",
 						"width=500,height=200");
 			} else {
 				alert('아이디를 입력하세요!');

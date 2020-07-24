@@ -12,7 +12,6 @@
 	<%
 		String id = request.getParameter("id");
 	%>
-	<%="id: " + id%>
 	<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost:3306/WebMarketDB?useSSL=false" user="root"
 		password="1234" />
@@ -21,25 +20,25 @@
 	<sql:param value="<%=id%>" />
 	</sql:query>
 	<c:forEach var="row" items="${resultSet.rows}">
-		<!-- DB접속 Member_Table에서 조회 -->
-		<script type="text/javascript">
-			alert("이미 존재하는 ID입니다.");
-			/* opener: 팝업 창을 오픈한 부모 window */
-			window.opener.document.newMember.submit1
-					.setAttribute("disalbed=\"disabled\"");
-			window.opener.document.newMember.id.value = ""; /* 부모창의 요소에 값 설정 */
-			window.opener.document.newMember.id.focus();
-			/* 부모창 요소에 focus()처리 */
-			window.open.close(); /* 팝업창 닫기 */
-		</script>
+		<c:if test="${row!=null}">
+			<!-- DB접속 Member_Table에서 조회 -->
+			<script type="text/javascript">
+				alert("1이미 존재하는 ID입니다.");
+				/* opener: 팝업 창을 오픈한 부모 window */
+				window.opener.document.newMember.id.value = ""; /* 부모창의 요소에 값 설정 */
+				window.opener.document.newMember.id.focus();
+				/* 부모창 요소에 focus()처리 */
+				window.close(); /* 팝업창 닫기 */
+			</script>
+		</c:if>
 	</c:forEach>
 	<script type="text/javascript">
 		alert("사용할 수 있는 ID입니다.");
+		window.opener.document.newMember.chkId.setAttribute("type", "hidden");
 		window.opener.document.newMember.id
 				.setAttribute("readonly", "readonly");
-		window.opener.document.newMember.changeId
-				.setAttribute("type", "button");
-		window.opener.document.newMember.submit1.removeAttribute("disabled");
+		window.opener.document.newMember.updId.setAttribute("type", "button");
+		window.opener.document.newMember.submitBtn.removeAttribute("disabled");
 		window.close(); /* 팝업창 닫기 */
 	</script>
 </body>
