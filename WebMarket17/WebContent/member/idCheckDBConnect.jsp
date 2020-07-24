@@ -19,12 +19,14 @@
 	ResultSet resultSet = preparedStatement.executeQuery();
 	while (resultSet.next()) {
 		if (resultSet.getString(1).equals("0")) {
-	%><script type="text/javascript">
+	%>
+	<script type="text/javascript">
 		alert("사용할 수 있는 ID입니다.");
 		window.opener.document.newMember.id
 				.setAttribute("readonly", "readonly");
 		window.opener.document.newMember.changeId
 				.setAttribute("type", "button");
+		window.opener.document.newMember.submit.removeAttribute("disabled");
 		window.close(); /* 팝업창 닫기 */
 	</script>
 	<%
@@ -34,6 +36,8 @@
 	<script type="text/javascript">
 		alert("이미 존재하는 ID입니다.");
 		/* opener: 팝업 창을 오픈한 부모 window */
+		window.opener.document.newMember.submit
+				.setAttribute("disalbed=\"disabled\"");
 		window.opener.document.newMember.id.value = ""; /* 부모창의 요소에 값 설정 */
 		window.opener.document.newMember.id.focus();
 		/* 부모창 요소에 focus()처리 */

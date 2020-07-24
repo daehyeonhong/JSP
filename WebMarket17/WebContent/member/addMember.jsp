@@ -30,36 +30,37 @@
 							<table width="100%">
 								<tr>
 									<td align="left"><input type="button" value="중복확인"
-										class="btn btn-secondary col-sm-6" onclick="idCheck()" /></td>
+										class="btn btn-secondary col-sm-4" onclick="idCheck()" /></td>
+								</tr>
+								<tr>
 									<td align="left"><input type="hidden" value="ID변경"
-										id="changeId" class="btn btn-secondary col-sm-6"
+										id="changeId" class="btn btn-warning col-sm-4"
 										onclick="changeIds()" /></td>
 								</tr>
 							</table>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">비밀번호</label>
 				<div class="col-sm-3">
 					<input type="password" name="password" class="form-control"
-						placeholder="password" />
+						placeholder="password" required="required" />
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2">비밀번호확인</label>
+				<label class="col-sm-2">비밀번호 확인</label>
 				<div class="col-sm-3">
 					<input type="password" name="password_confirm" class="form-control"
-						placeholder="password_confirm" />
+						placeholder="password_confirm" required="required" />
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">성명</label>
 				<div class="col-sm-3">
-					<input name="name" class="form-control" placeholder="name" />
+					<input name="name" class="form-control" placeholder="name"
+						required="required" />
 				</div>
 			</div>
 			<div class="form-group row">
@@ -92,7 +93,7 @@
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-2">E-Mail</label>
+				<label class="col-sm-2">EMail</label>
 				<div class="col-sm-10">
 					<input name="mail1" maxlength="50" placeholder="EMail" />@ <select
 						name="mail2">
@@ -145,8 +146,9 @@
 
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-4">
-					<input type="submit" value="등록" class="btn btn-primary" /> <input
-						type="reset" value="취소" class="btn btn-warning" />
+					<input type="submit" id="submit" value="등록" disabled="disabled"
+						class="btn btn-primary" /> <input type="reset"
+						onclick="resetType()" value="취소" class="btn btn-warning" />
 				</div>
 			</div>
 		</form>
@@ -155,17 +157,31 @@
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
+		function resetType() {
+			document.newMember.id.removeAttribute("readonly");
+			document.newMember.changeId.setAttribute("type", "hidden");
+			document.newMember.submit.setAttribute("disabled", "disabled");
+		}
 		function changeIds() {
+			document.newMember.changeId.setAttribute("type", "hidden");
+			document.newMember.submit.setAttribute("disabled", "disabled");
 			document.newMember.id.removeAttribute("readonly");
 			document.getElementById("id").value = "";
 			document.getElementById("id").focus();
 		}
+
 		function idCheck() {
 			/* 과제 */
-			let id = document.getElementById("id").value;
-			alert('아이디: ' + id);
-			window.open('idCheckDBConnect.jsp?id=' + id, "ID체크",
-					"width=500,height=200");
+			let id = document.getElementById("id").value.trim();
+			if (id != "") {
+				alert('아이디: ' + id);
+				window.open('idCheckDBConnect.jsp?id=' + id, "ID체크",
+						"width=500,height=200");
+			} else {
+				alert('아이디를 입력하세요!');
+				document.newMember.id.value = "";
+				document.newMember.id.focus();
+			}
 		}
 
 		function execDaumPostcode() {
