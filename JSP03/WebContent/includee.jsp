@@ -8,7 +8,7 @@
 </head>
 <body>
 	includer.jsp에서 지정한 번호:
-	<%=number%>
+	<%-- <%=number%> --%>
 	<%
 		String dataFolder = "c:\\data";
 	%>

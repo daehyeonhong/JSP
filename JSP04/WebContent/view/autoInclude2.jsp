@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <p>
-	오늘은 <b> <%=today%></b> 입니다.
+	오늘은<b>
+		<%-- <%=today%> --%>
+	</b> 입니다.
 </p>
 <br />

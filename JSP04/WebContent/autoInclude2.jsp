@@ -8,7 +8,8 @@
 </head>
 <body>
 	오늘은
-	<b><%=today%></b> 입니다.
+	<b> <%-- <%=today%> --%>
+	</b> 입니다.
 	<br />
 </body>
 </html>

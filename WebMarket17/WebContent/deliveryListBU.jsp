@@ -16,13 +16,9 @@
 		driver="com.mysql.jdbc.Driver" user="root" password="1234" />
 	<jsp:include page="menu.jsp" />
 	<sql:query var="resultSet" dataSource="${dataSource}">
-		<%-- select d.seq,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address from sale s,delivery d,product p where s.sessionId=d.sessionId and
-      s.productId=p.p_id; --%>
         select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from sale s,delivery d,status st where s.sessionId=d.sessionId and s.status=st.statusNumber;
 	</sql:query>
 	<sql:query var="statusList" dataSource="${dataSource}">
-		<%-- select d.seq,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address from sale s,delivery d,product p where s.sessionId=d.sessionId and
-      s.productId=p.p_id; --%>
       select status from status
 	</sql:query>
 	<div class="jumbotron">
@@ -38,16 +34,16 @@
 			<caption>배송 목록</caption>
 			<thead class="thead-dark">
 				<tr>
-					<th>주문코드</th>
+					<th>코드</th>
 					<th>주문일</th>
-					<th>제품번호</th>
-					<th>구매 수량</th>
-					<th>구매자 성함</th>
-					<th>구매일</th>
-					<th>배송 국가</th>
-					<th>우편번호</th>
-					<th>배송주소</th>
-					<th>배송 상태</th>
+					<th>번호</th>
+					<th>수량</th>
+					<th>성함</th>
+					<th>일</th>
+					<th>국가</th>
+					<th>번호</th>
+					<th>주소</th>
+					<th>상태</th>
 				</tr>
 			</thead>
 			<c:forEach var="row" items="${resultSet.rowsByIndex}" varStatus="i">
@@ -55,14 +51,14 @@
 					<c:forEach var="column" items="${row}" varStatus="j">
 						<td><c:if test="${column!=null}">
 								<c:if test="${j.index==9}">
-									<select name="category" class="form-control" id="category"
-										onchange="return checkChange()">
+									${column}
+									<select name="category" class="form-control" id="category">
 										<c:forEach var="statusrow" items="${statusList.rowsByIndex}"
 											varStatus="k">
 											<c:forEach var="status" items="${statusrow}" varStatus="l">
 												<c:if test="${status!=null}">
 													<option value="${status}"
-														<c:if test="${status==column}">"'selected'"</c:if>>${status}</option>
+														<c:if test="${status==column}">${selected='selected'}</c:if>>${status}</option>
 												</c:if>
 												<c:if test="${status==null}">
 			                  	&nbsp;
@@ -88,11 +84,16 @@
 			<table width="100%">
 				<tr>
 					<td align="left"><a href="./products.jsp"
-						class="btn btn-secondary" onclick="deleteCart()">&laquo;상품 목록</a></td>
+						class="btn btn-secondary">&laquo;상품 목록</a></td>
 				</tr>
 			</table>
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />
+	<script type="text/javascript">
+		function checkChange(a) {
+			alert(a);
+		}
+	</script>
 </body>
 </html>

@@ -62,7 +62,7 @@
 			<table width="100%">
 				<tr>
 					<td align="left"><a href="./products.jsp"
-						class="btn btn-secondary" onclick="deleteCart()">&laquo;상품 목록</a></td>
+						class="btn btn-secondary">&laquo;상품 목록</a></td>
 				</tr>
 			</table>
 		</div>

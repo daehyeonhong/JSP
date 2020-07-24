@@ -17,12 +17,29 @@
 		</div>
 	</div>
 	<div class="container">
-		<form action="processAddMember" name="newMember"
+		<form action="processAddMember.jsp" name="newMember"
 			class="form-horizontal" method="post" onsubmit="return checkForm()">
 			<div class="form-group row">
 				<label class="col-sm-2">아이디</label>
 				<div class="col-sm-3">
-					<input name="id" class="form-control" placeholder="ID" />
+					<input name="id" id="id" class="form-control" placeholder="ID"
+						required="required" />
+
+					<div class="container">
+						<div class="row">
+							<table width="100%">
+								<tr>
+									<td align="left"><input type="button" value="중복확인"
+										class="btn btn-secondary col-sm-6" onclick="idCheck()" /></td>
+									<td align="left"><input type="hidden" value="ID변경"
+										id="changeId" class="btn btn-secondary col-sm-6"
+										onclick="changeIds()" /></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+
 				</div>
 			</div>
 			<div class="form-group row">
@@ -104,7 +121,7 @@
 
 			<div class="form-group row">
 				<label class="col-sm-2">주소</label>
-				<div class="col-sm-5">
+				<div class="col-sm-10">
 					<input name="address" id="address" class="form-control"
 						placeholder="address" />
 				</div>
@@ -127,7 +144,7 @@
 			</div>
 
 			<div class="form-group row">
-				<div class="col-sm-offset-2 col-sm-10">
+				<div class="col-sm-offset-2 col-sm-4">
 					<input type="submit" value="등록" class="btn btn-primary" /> <input
 						type="reset" value="취소" class="btn btn-warning" />
 				</div>
@@ -138,6 +155,19 @@
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
+		function changeIds() {
+			document.newMember.id.removeAttribute("readonly");
+			document.getElementById("id").value = "";
+			document.getElementById("id").focus();
+		}
+		function idCheck() {
+			/* 과제 */
+			let id = document.getElementById("id").value;
+			alert('아이디: ' + id);
+			window.open('idCheckDBConnect.jsp?id=' + id, "ID체크",
+					"width=500,height=200");
+		}
+
 		function execDaumPostcode() {
 			new daum.Postcode(
 					{
