@@ -60,6 +60,8 @@ else '미정'
 end)
 from sale;
 
+select count(*)from member where id=1
+
 /* 주문 테이블 */
 create table sale(
 seq int not null auto_increment,
@@ -138,6 +140,8 @@ primary key(id)
 )default CHARSET=UTF8;
 update sale set status=2 where productId='P1235' and sessionId='FDFE9437BF8171A65EC2D60277B9C3AA'
 update sale set status=3 where productId='P1235' and sessionId='FDFE9437BF8171A65EC2D60277B9C3AA';
+
+select productId if (status=1 '결재완료','미정')
 
 select*from status
 select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from sale s,delivery d,status st where s.sessionId=d.sessionId and s.status=st.statusNumber

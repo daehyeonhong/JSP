@@ -146,7 +146,7 @@
 
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-4">
-					<input type="submit" id="submit" value="등록" disabled="disabled"
+					<input type="submit" id="submit1" value="등록" disabled="disabled"
 						class="btn btn-primary" /> <input type="reset"
 						onclick="resetType()" value="취소" class="btn btn-warning" />
 				</div>
@@ -160,7 +160,7 @@
 		function resetType() {
 			document.newMember.id.removeAttribute("readonly");
 			document.newMember.changeId.setAttribute("type", "hidden");
-			document.newMember.submit.setAttribute("disabled", "disabled");
+			document.newMember.submit1.setAttribute("disabled", "disabled");
 		}
 		function changeIds() {
 			document.newMember.changeId.setAttribute("type", "hidden");
