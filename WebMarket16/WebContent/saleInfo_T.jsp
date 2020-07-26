@@ -3,12 +3,12 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ include file="dbconn.jsp"%>
+<%@ include file="DBConnection.jsp"%>
 <%
 	String sql = "select *  from sale s,delivery d,product p ";
 sql += " where s.productId=p.p_id ";
 sql += " and s.sessionId=d.sessionId order by s.seq";
-PreparedStatement pstmt = con.prepareStatement(sql);
+PreparedStatement pstmt = connection.prepareStatement(sql);
 ResultSet rs = pstmt.executeQuery();
 int seq = 0;
 if (rs.next()) {
@@ -44,7 +44,7 @@ if (rs.next()) {
 				sql = "select *  from sale s,delivery d,product p ";
 			sql += " where s.productId=p.p_id ";
 			sql += " and s.sessionId=d.sessionId order by s.seq";
-			pstmt = con.prepareStatement(sql);
+			pstmt = connection.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			%>
 		</div>

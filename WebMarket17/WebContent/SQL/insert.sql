@@ -147,6 +147,7 @@ select*from status
 select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from sale s,delivery d,status st where s.sessionId=d.sessionId and s.status=st.statusNumber
 select*from sale
 select*from member
+select*from product
 
 select*from member where id=2
 
