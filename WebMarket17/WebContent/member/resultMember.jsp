@@ -30,9 +30,10 @@
 				out.print("<h2 class=\"alert alert-danger\">" + loginId + "님 환영합니다.</h2>");
 				break;
 			default:
-				out.print("<h2 class=\"alert alert-danger\">회원 정보가 삭제되었습니다.</h2>");
 				break;
 			}
+		} else {
+			out.print("<h2 class=\"alert alert-danger\">회원 정보가 삭제되었습니다.</h2>");
 		}
 		%>
 	</div>

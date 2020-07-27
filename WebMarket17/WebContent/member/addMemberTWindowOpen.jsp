@@ -178,9 +178,8 @@
 			let id = document.getElementById("id").value.trim();
 			if (id != "") {
 				alert('아이디: ' + id);
-				window.open("idCheck.jsp?id=" + id, "ID체크", "_blank",
-						"toolbar=yes", "scrollbars=yes",
-						"resizable=yes,top=100,left=500,width=200,height=100");
+				window.open("idCheck.jsp?id=" + id, "ID체크",
+						"width=500,height=200");
 			} else {
 				alert('아이디를 입력하세요!');
 				document.newMember.id.value = "";
