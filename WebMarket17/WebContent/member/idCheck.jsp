@@ -10,7 +10,8 @@
 </head>
 <body>
 	<%
-		String id = request.getParameter("id");
+		String id = request.getParameter("id").trim();
+	System.out.print(id);
 	%>
 	<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost:3306/WebMarketDB?useSSL=false" user="root"
@@ -23,7 +24,8 @@
 		<c:if test="${row!=null}">
 			<!-- DB접속 Member_Table에서 조회 -->
 			<script type="text/javascript">
-				alert("1이미 존재하는 ID입니다.");
+				let id = window.opener.document.newMember.id.value.trim();
+				alert("[" + id + "] 이미 존재하는 ID입니다.");
 				/* opener: 팝업 창을 오픈한 부모 window */
 				window.opener.document.newMember.id.value = ""; /* 부모창의 요소에 값 설정 */
 				window.opener.document.newMember.id.focus();
@@ -33,7 +35,9 @@
 		</c:if>
 	</c:forEach>
 	<script type="text/javascript">
-		alert("사용할 수 있는 ID입니다.");
+		let id = window.opener.document.newMember.id.value.trim();
+		alert("[" + id + "] 사용할 수 있는 ID입니다.");
+		window.opener.document.newMember.id.value = id.trim();
 		window.opener.document.newMember.chkId.setAttribute("type", "hidden");
 		window.opener.document.newMember.id
 				.setAttribute("readonly", "readonly");

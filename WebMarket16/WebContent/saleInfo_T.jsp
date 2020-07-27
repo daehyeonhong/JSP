@@ -3,7 +3,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ include file="DBConnection.jsp"%>
+<%@include file="DBConnection.jsp"%>
 <%
 	String sql = "select *  from sale s,delivery d,product p ";
 sql += " where s.productId=p.p_id ";
