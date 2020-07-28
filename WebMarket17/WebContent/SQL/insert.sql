@@ -41,7 +41,7 @@ select p_id from product where p_id='P1234'
 
 alter table sale add column status int;
 
-update sale set status=3 where productId=;
+update sale set status=3 where productId=null;
 
 create table status(
 statusNumber int not null auto_increment,
@@ -144,11 +144,18 @@ update sale set status=3 where productId='P1235' and sessionId='FDFE9437BF8171A6
 select productId if (status=1 '결재완료','미정')
 
 select*from status
-select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from sale s,delivery d,status st where s.sessionId=d.sessionId and s.status=st.statusNumber
+select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from sale s,delivery d,status st where s.sessionId=d.sessionId and s.status=st.statusNumber and s.status=1
 select*from sale
+select*from delivery
 select*from member
 select*from product
 
 select*from member where id=2
+
+
+select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from sale s,delivery d,status st where s.sessionId=d.sessionId and s.status=st.statusNumber
+
+
+select*from product order by p_id
 
 

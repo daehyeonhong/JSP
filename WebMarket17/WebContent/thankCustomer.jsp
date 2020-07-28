@@ -131,7 +131,9 @@
 	</div>
 	<%
 		/* session정보 삭제 */
-	session.invalidate();
+		System.out.print("세션 on");
+		session.removeAttribute("cartList");
+		System.out.print("세션 off");
 	/* Cookie에 저장된 장바구니 정보 삭제 */
 	for (int i = 0; i < cookies.length; i++) {
 		Cookie thisCookie = cookies[i];

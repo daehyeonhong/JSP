@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="DBConnection.jsp"%>
 <%
 	/* 로그인 여부 확인 */
 String sessionId = (String) session.getAttribute("sessionId");
+/* loginObject */
 %>
 <nav class="navbar navbar-expand navbar-dark bg-dark">
 	<div class="container">
@@ -11,6 +13,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 			<a class="navbar-brand"
 				href="${pageContext.request.contextPath}/welcome.jsp">Home</a>
 		</div>
+		
 		<ul class="navbar-nav mr-auto">
 			<c:choose>
 				<c:when test="${empty sessionId}">
