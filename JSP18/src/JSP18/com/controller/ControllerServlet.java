@@ -38,6 +38,7 @@ public class ControllerServlet extends HttpServlet {
 
 		/* 비밀번호 맞는지 여부에 따른 결과 페이지 분기 처리 */
 		if (status) {/* 패스워드가 admin인 경우 */
+			/* Interface */
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("mvc_success.jsp");
 			requestDispatcher.forward(request, response);
 		} else {/* 패스워드가 admin이 아닌 경우 */

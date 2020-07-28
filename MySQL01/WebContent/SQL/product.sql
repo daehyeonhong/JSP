@@ -20,3 +20,5 @@ drop table product;
 insert into product values('P1234','iPhone',800000,'1330x750 Retina HD Display, 8-MegaPixel iSight Camera','Smart Phone','Apple',1000,'new','P1234.png');
 insert into product values('P1235','LG PC Gram',1500000,'3.3-inch,Ips LED display, 5rd Generation intel Core processors','NoteBook','LG',1000,'new','P1235.png');
 insert into product values('P1236','Galaxy Tab S',900000,'3.3-inch, 212*125.6*6mm, Super AMOLED Display, Octa-Core processors','Tablet','삼성',1000,'new','P1236.png');
+
+select*from member;
