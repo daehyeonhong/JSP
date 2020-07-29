@@ -2,7 +2,7 @@ package mvc.model;
 
 public class BoardDTO {
 	/* Table의 [Column_Name]_Type과 같은 속성 선언 */
-	private int num;/* 순번 */
+	private int num, hit;/* 순번 */
 	private String id/* 작성자ID */, name/* 작성자 이름 */, subject/* 제목 */, content/* 내용 */, regist_day/* 등록일자 */,
 			ip/* IP주소 */;
 
@@ -56,6 +56,14 @@ public class BoardDTO {
 
 	public void setRegist_day(String regist_day) {
 		this.regist_day = regist_day;
+	}
+
+	public int getHit() {
+		return hit;
+	}
+
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 
 	public String getIp() {

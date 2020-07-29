@@ -5,7 +5,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="DBConnectionDBCP.jsp"%>
+<%@include file="DBConnection.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>

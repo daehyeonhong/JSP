@@ -151,4 +151,4 @@ select*from product
 
 select*from member where id=2
 
-
+select*from product order by p_id

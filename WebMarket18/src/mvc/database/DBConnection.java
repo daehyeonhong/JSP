@@ -6,15 +6,14 @@ import java.sql.DriverManager;
 /* Singleton 으로 작성 */
 public class DBConnection {
 	/* 자기 자신 타입의 instance_Field */
-	private static DBConnection instance = new DBConnection();
+	private static DBConnection instance;
 
 	/* Constructor 캡슐화 */
-	private DBConnection() {
-	}
+	private DBConnection() {}
 
 	/* instance 얻기 */
 	public static DBConnection getInstance() {
-		return instance;
+		return (instance == null) ? new DBConnection() : instance;
 	}
 
 	/* 외부 접근 가능한 getConnection_Method() */
