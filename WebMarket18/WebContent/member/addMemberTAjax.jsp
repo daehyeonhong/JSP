@@ -52,7 +52,7 @@
 					<input type="password" name="password_confirm" id="password_confirm" class="form-control" placeholder="password_confirm" required="required" />
 				</div>
 				<label id="checkPasswordResult"></label>
-				<input type="hidden" id="passwordConfirm" value="false" />
+				<input type="text" id="passwordConfirm" value="false" />
 			</div>
 
 			<div class="form-group row">
