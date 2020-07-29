@@ -28,7 +28,7 @@
 			document.frm.name.focus();
 			return;
 		}
-		document.from.submit();/* action으로 Data 전송 */
+		document.form.submit();/* action으로 Data 전송 */
 		
 	}
 </script>
