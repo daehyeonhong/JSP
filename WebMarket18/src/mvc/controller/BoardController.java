@@ -78,6 +78,7 @@ public class BoardController extends HttpServlet {
 		/* 출력할 게시글의 초기화 작업 */
 		int pageNum = 1;/* 최초 페이지는 1Page로 설정 */
 		int limit = LISTCOUNT;/* 한 페이지당 출력 갯수 설정: 5 */
+		int segment = 3;
 		/* PageList에서 해당 Page를 클릭했을 때 해당 Page가 넘어옴 */
 		if (request.getParameter("pageNum") != null) {
 			pageNum = Integer.parseInt(request.getParameter("pageNum"));
