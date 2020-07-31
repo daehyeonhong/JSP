@@ -17,3 +17,8 @@ select*from board
 desc board
 /* Table 삭제*/
 drop table board
+
+select name from member where id = 1
+select name from member where id=1
+
+id,name,subject,content,regist_day,hit,ip

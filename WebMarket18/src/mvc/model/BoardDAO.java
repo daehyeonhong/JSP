@@ -39,7 +39,6 @@ public class BoardDAO {
 			connection = DBConnection.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(sql);
 			resultSet = preparedStatement.executeQuery();
-
 			x = (resultSet.next()) ? resultSet.getInt(1) : 0;
 		} catch (Exception e) {
 			System.out.println("getListCount()Error: " + e);
@@ -129,4 +128,156 @@ public class BoardDAO {
 		return list;
 	}
 
+	public String getNameById(String id) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String name = "";
+		try {
+			connection = DBConnection.getInstance().getConnection();
+			String sql = "select name from member where id=?";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, id);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				name = resultSet.getString(1);
+			}
+		} catch (Exception e) {
+			System.out.println("getNameById()Error: " + e);
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return name;
+	}
+
+	public void insertBoard(BoardDTO board) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			/* Query_Object */
+			connection = DBConnection.getInstance().getConnection();
+			String sql = "insert into board(id,name,subject,content,regist_day,hit,ip)values(?,?,?,?,?,?,?)";
+			preparedStatement = connection.prepareStatement(sql);
+			
+			/* Parameter */
+			preparedStatement.setString(1, board.getId());
+			preparedStatement.setString(2, board.getName());
+			preparedStatement.setString(3, board.getSubject());
+			preparedStatement.setString(4, board.getContent());
+			preparedStatement.setString(5, board.getRegist_day());
+			preparedStatement.setInt(6, board.getHit());
+			preparedStatement.setString(7, board.getIp());
+			
+			/* Update */
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("insertBoard()Error: " + e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+	}
+
+	public BoardDTO getBoardByNum(int num, int pageNum) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		BoardDTO board = null;
+		try {
+			/* Query_Object */
+			connection = DBConnection.getInstance().getConnection();
+			String sql = "select*from board where num=?";
+			preparedStatement = connection.prepareStatement(sql);
+			
+			/* Parameter */
+			preparedStatement.setInt(1, num);
+
+			/* Update */
+			resultSet = preparedStatement.executeQuery();
+			
+			if (resultSet.next()) {
+				board = new BoardDTO();
+				board.setNum(resultSet.getInt("num"));
+				board.setId(resultSet.getString("id"));
+				board.setName(resultSet.getString("name"));
+				board.setSubject(resultSet.getString("Subject"));
+				board.setContent(resultSet.getString("content"));
+				board.setRegist_day(resultSet.getString("regist_day"));
+				board.setHit(resultSet.getInt("hit"));
+				board.setIp(resultSet.getString("ip"));
+			}
+		} catch (Exception e) {
+			System.out.println("getBoardByNum()Error: " + e);
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		/* Board Return */
+		return board;
+	}
+
+	public void updateBoard(BoardDTO board) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			/* Query_Object */
+			connection = DBConnection.getInstance().getConnection();
+			String sql = "update board set subject=?,content=?,regist_day=?,ip=? where num=?";
+			preparedStatement = connection.prepareStatement(sql);
+			
+			/* Parameter */
+			preparedStatement.setString(1, board.getSubject());
+			preparedStatement.setString(2, board.getContent());
+			preparedStatement.setString(3, board.getRegist_day());
+			preparedStatement.setString(4, board.getIp());
+			preparedStatement.setInt(5, board.getNum());
+			
+			/* Update */
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("updateBoard()Error: " + e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+	}
 }
