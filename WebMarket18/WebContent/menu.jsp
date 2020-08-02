@@ -10,8 +10,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 <nav class="navbar navbar-expand navbar-dark bg-dark">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand"
-				href="${pageContext.request.contextPath}/welcome.jsp">Home</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/welcome.jsp">Home</a>
 		</div>
 		
 		<ul class="navbar-nav mr-auto">

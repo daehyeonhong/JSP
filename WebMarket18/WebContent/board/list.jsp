@@ -1,6 +1,6 @@
 <%@page import="mvc.model.BoardDTO"%>
 <%@page import="java.util.List"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String sessionId = (String) session.getAttribute("sessionId");
@@ -16,7 +16,10 @@ String items = (String) request.getAttribute("items"),
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>게시판</title>
 </head>
 <body>
@@ -27,7 +30,7 @@ String items = (String) request.getAttribute("items"),
 			return false;
 		}
 		/* WriteForm으로 이동 */
-		location.href = './BoardWriteForm.do?id=<%=sessionId%>';
+		location.href = './BoardWriteFormAction.do?id=<%=sessionId%>';
 	}
 </script>
 	<jsp:include page="../menu.jsp" />
@@ -74,18 +77,24 @@ String items = (String) request.getAttribute("items"),
 			<%-- Page_Navigation --%>
 			<div align="center">
 				<c:set var="pageNum" value="<%=pageNum%>" />
-				<c:forEach var="i" begin="1" end="<%=total_page%>">
-					<a href="<c:url value="./BoardListAction.do?pageNum=${i}&items=${items}&text=${text}" />">
-						<c:choose>
-							<c:when test="${pageNum==i}">
-								<font color="#4C5317"><b>[${i}]</b></font>
-							</c:when>
-							<c:otherwise>
-								<font color="#4C5317">[${i}]</font>
-							</c:otherwise>
-						</c:choose>
-					</a>
-				</c:forEach>
+				<ul class="pagination pagination-sm">
+					<li class="previous"><a href="#">Previous</a></li>
+					<c:forEach var="i" begin="1" end="<%=total_page%>">
+						<li<c:if test="${pageNum == i}"> class = 'active'</c:if>>
+							<a href="<c:url value="./BoardListAction.do?pageNum=${i}&items=${items}&text=${text}" />">
+								<c:choose>
+									<c:when test="${pageNum==i}">
+										<font color="#4C5317"><b>${i}</b></font>
+									</c:when>
+									<c:otherwise>
+										<font color="#4C5317">${i}</font>
+									</c:otherwise>
+								</c:choose>
+							</a>
+						</li>
+					</c:forEach>
+					<li class="next"><a href="#">Next</a></li>
+				</ul>
 			</div>
 			<%-- Page_Navaigation 끝. --%>
 			<%-- 검색 조건 --%>
