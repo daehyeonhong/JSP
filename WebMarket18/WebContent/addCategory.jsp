@@ -56,9 +56,9 @@
 							placeholder="Description" />
 					</div>
 				</div>
-				<input type="submit" value="등록" class="btn btn-primary" /> <input
-					type="reset" value="취소" class="btn btn-warning" /> <a
-					href="./products.jsp" class="btn btn-secondary">리스트로 &raquo;</a>
+				<input type="submit" value="등록" class="btn btn-primary" />
+				<input type="reset" value="취소" class="btn btn-warning" />
+				<a href="./products.jsp" class="btn btn-secondary">리스트로 &raquo;</a>
 			</form>
 		</div>
 	</div>
