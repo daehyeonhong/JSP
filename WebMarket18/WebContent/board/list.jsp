@@ -8,7 +8,11 @@ List<BoardDTO> boardList = (List<BoardDTO>) request.getAttribute("boardList");
 
 int total_record = (Integer) request.getAttribute("total_record"),
 		pageNum = (Integer) request.getAttribute("pageNum"),
-		total_page = (Integer) request.getAttribute("total_page");
+		total_page = (Integer) request.getAttribute("total_page"),
+		currentBlock = (Integer) request.getAttribute("currentBlock"),
+		startPage = (Integer) request.getAttribute("startPage"),
+		endPage = (Integer) request.getAttribute("endPage"),
+		total_segment = (Integer) request.getAttribute("total_segment");
 String items = (String) request.getAttribute("items"),
 		text = (String) request.getAttribute("text");
 %>
@@ -17,22 +21,22 @@ String items = (String) request.getAttribute("items"),
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>게시판</title>
 </head>
 <body>
 	<script type="text/javascript">
-	function checkForm() {
-		if (${sessionId == null}) {
-			alert('로그인 해주세요!');
-			return false;
+		function checkForm() {
+			if (${sessionId == null}) {
+				alert('로그인 해주세요!');
+				return false;
+			}
+			/* WriteForm으로 이동 */
+			location.href = './BoardWriteFormAction.do?id=<%=sessionId%>';
 		}
-		/* WriteForm으로 이동 */
-		location.href = './BoardWriteFormAction.do?id=<%=sessionId%>';
-	}
-</script>
+	</script>
 	<jsp:include page="../menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
@@ -75,15 +79,30 @@ String items = (String) request.getAttribute("items"),
 			</div>
 			<%-- List 끝 --%>
 			<%-- Page_Navigation --%>
+			<c:set var="currentBlock" value="<%=currentBlock%>" />
+			<c:set var="pageNum" value="<%=pageNum%>" />
+			<c:set var="total_page" value="<%=total_page%>" />
+			<c:set var="startPage" value="<%=startPage%>" />
+			<c:set var="endPage" value="<%=endPage%>" />
+			<c:set var="total_segment" value="<%=total_segment%>" />
 			<div align="center">
 				<c:set var="pageNum" value="<%=pageNum%>" />
 				<ul class="pagination pagination-sm">
-					<li class="previous"><a href="#">Previous</a></li>
-					<c:forEach var="i" begin="1" end="<%=total_page%>">
+				<%-- 이전 Segment_Block으로 이동 --%>
+					<c:if test="${currentBlock <= 1}">
+						<li class="previous disabled"><a href="#">Previous</a></li>
+					</c:if>
+					<c:if test="${currentBlock > 1}">
+						<li class="previous">
+							<a href="./BoardListAction.do?pageNum=${startPage - 1}&items=${items}&text=${text}">Previous</a>
+						</li>
+					</c:if>
+					<%-- 현재 Segment_Block내에서의 Page List --%>
+					<c:forEach var="i" begin="${startPage}" end="${endPage}">
 						<li<c:if test="${pageNum == i}"> class = 'active'</c:if>>
 							<a href="<c:url value="./BoardListAction.do?pageNum=${i}&items=${items}&text=${text}" />">
 								<c:choose>
-									<c:when test="${pageNum==i}">
+									<c:when test="${pageNum == i}">
 										<font color="#4C5317"><b>${i}</b></font>
 									</c:when>
 									<c:otherwise>
@@ -93,7 +112,15 @@ String items = (String) request.getAttribute("items"),
 							</a>
 						</li>
 					</c:forEach>
-					<li class="next"><a href="#">Next</a></li>
+					<%-- 다음 Segment_Block으로 이동 처리 --%>
+					<c:if test="${currentBlock < total_segment}">
+						<li class="next">
+							<a href="<c:url value="./BoardListAction.do?pageNum=${endPage + 1}&items=${items}&text=${text}" />">Next</a>
+						</li>
+					</c:if>
+					<c:if test="${currentBlock >= total_segment}">
+						<li class="next disabled"><a href="#">Next</a></li>
+					</c:if>
 				</ul>
 			</div>
 			<%-- Page_Navaigation 끝. --%>

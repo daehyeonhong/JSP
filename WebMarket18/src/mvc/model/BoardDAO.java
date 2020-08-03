@@ -84,7 +84,7 @@ public class BoardDAO {
 			connection = DBConnection.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(sql);
 			resultSet = preparedStatement.executeQuery();
-			while (resultSet.absolute(index)) {
+			while (resultSet.absolute(index)) {/* 한 행씩 전진 */
 				BoardDTO board = new BoardDTO();
 				/* board빈에 결과 값 설정 */
 				board.setNum(resultSet.getInt("num"));
@@ -203,6 +203,8 @@ public class BoardDAO {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		BoardDTO board = null;
+		/* 조회 수 증가 처리 */
+		updateHit(num);
 		try {
 			/* Query_Object */
 			connection = DBConnection.getInstance().getConnection();
@@ -247,6 +249,38 @@ public class BoardDAO {
 		return board;
 	}
 
+	/* 조회 수 증가 Method */
+	public void updateHit(int num) {
+		/* DB ConnectObject */
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			/* DB 연결하기 */
+			connection = DBConnection.getInstance().getConnection();
+			/* Query문 작성 */
+			String sql = "update board set hit=hit+1 where num=?";
+			/* Query객체 생성 */
+			preparedStatement = connection.prepareStatement(sql);
+			/* 바인딩 변수 처리 */
+			preparedStatement.setInt(1, num);
+			/* DB Update 처리 */
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("updateHit()Error: " + e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+	}
+	
 	public void updateBoard(BoardDTO board) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -268,6 +302,37 @@ public class BoardDAO {
 		} catch (Exception e) {
 			System.out.println("updateBoard()Error: " + e);
 		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+	}
+
+	/* DB에서 해당 글 번호로 삭제 처리 */
+	public void deleteBoard(int num) {
+		/* DB연결 객체 생성 */
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			/* DB 연결하기 */
+			connection = DBConnection.getInstance().getConnection();
+			String sql = "delete from board where num=?";
+			/* 쿼리객체 생성 */
+			preparedStatement = connection.prepareStatement(sql);
+			/*바인딩 변수 설정*/
+			preparedStatement.setInt(1, num);
+			/*삭제 쿼리 실행*/
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("deleteBoard()Error: " + e);
+		} finally {/* 자원 해제 처리 */
 			try {
 				if (preparedStatement != null) {
 					preparedStatement.close();

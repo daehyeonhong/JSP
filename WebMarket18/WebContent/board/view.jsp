@@ -9,10 +9,20 @@
 <title>WriteForm</title>
 </head>
 <body>
+<script type="text/javascript">
+	function deleteConfirm(num, pageNum) {
+		let yesNo = confirm(num + '번 글을 삭제할까요?');
+		if (yesNo) {
+			location.href = './BoardDeleteAction.do?num=' + num + '&pageNum='+ pageNum;
+		} else {
+			alert('요청이 취소되었습니다.');
+		}
+	}
+</script>
 <%
 	BoardDTO board = (BoardDTO) request.getAttribute("board");
 	int num = (Integer) request.getAttribute("num");
-	int nowPage = (Integer) request.getAttribute("pageNum");
+	int nowPage = (Integer) request.getAttribute("page");
 %>
 	<%@include file="../menu.jsp"%>
 	<div class="jumbotron">
@@ -22,7 +32,7 @@
 	</div>
 	<!-- 글쓰기 폼 -->
 	<div class="container">
-		<form action="${pageContext.request.contextPath}/BoardUpdateAction.do?num<%=board.getNum()%>&pageNum=<%=nowPage%>" name="newUpdate" class="form-horizontal" method="post" onsubmit="return checkForm()">
+		<form action="${pageContext.request.contextPath}/BoardUpdateAction.do?num=<%=board.getNum()%>&pageNum=<%=nowPage%>" name="newUpdate" class="form-horizontal" method="post">
 			<input type="hidden" name="id" value="${sessionId}" />
 			
 			<div class="form-group row">
@@ -51,9 +61,8 @@
 				<div class="col-sm-10 col-sm-offset-2">
 					<c:set var="userId" value="<%=board.getId()%>"/>
 						<c:if test="${sessionId==userId}">
-							<a href="BoardUpdateAction.do?num=<%=board.getNum()%>&pageNum=<%=board.getNum()%>" class="btn btn-danger">수정</a>
-							<a href="BoardDeleteAction.do?num=<%=board.getNum()%>&pageNum=<%=board.getNum()%>" class="btn btn-danger">삭제</a>
-							<input type="submit" class="btn btn-success" value="등록" />
+							<a href="javascript:deleteConfirm(<%=board.getNum()%>,<%=nowPage%>)" class="btn btn-danger">삭제</a>
+							<input type="submit" class="btn btn-success" value="수정">
 							<input type="reset" class="btn btn-warning" value="취소" />
 						</c:if>
 							<a href="./BoardListAction.do?pageNum=<%=nowPage%>" class="btn btn-primary">목록</a>

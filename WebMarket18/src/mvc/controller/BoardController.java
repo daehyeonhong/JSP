@@ -65,13 +65,28 @@ public class BoardController extends HttpServlet {
 			break;
 		case "/BoardUpdateAction.do":/* Update내용 DB에 저장하기 */
 			requestBoardUpdate(request);
-			requestDispatcher = request.getRequestDispatcher("./BoardListAction.do");
+			requestDispatcher = request.getRequestDispatcher("BoardListAction.do");
+			break;
+		case "/BoardDeleteAction.do": /* 삭제 처리, 게시글 리스트로 이동 */
+			requestBoardDelete(request);
+			requestDispatcher = request.getRequestDispatcher("BoardListAction.do");
 			break;
 		default:
 			requestDispatcher = request.getRequestDispatcher("/exceptionNoPage.jsp");
 			break;
 		}
 		requestDispatcher.forward(request, response);
+	}
+
+	/* 게시글 삭제 Method */
+	private void requestBoardDelete(HttpServletRequest request) {
+		/* Request로 넘어온 Parameter처리 */
+		int num = Integer.parseInt(request.getParameter("num")),
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+
+		/* DB에서 삭제 처리 */
+		BoardDAO dao = BoardDAO.getInstance();
+		dao.deleteBoard(num);
 	}
 
 	/* Update정보 DB에 저장 */
@@ -83,11 +98,12 @@ public class BoardController extends HttpServlet {
 		
 		/* DB에서 정보 얻기 */
 		BoardDTO board = new BoardDTO();
-		board.setNum(num);;
+		board.setNum(num);
 		board.setSubject(request.getParameter("subject"));
 		board.setContent(request.getParameter("content"));
 		
 		String regist_day = new SimpleDateFormat("yyyy/MM/dd(HH:mm:ss)").format(new Date());
+		System.out.println(regist_day);
 		board.setRegist_day(regist_day);
 		board.setIp(request.getRemoteAddr());/* IP주소 */
 
@@ -95,7 +111,7 @@ public class BoardController extends HttpServlet {
 
 		/* View로 정보를 넘기기 위한 설정 */
 		request.setAttribute("num", num);
-		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("page", pageNum);
 		request.setAttribute("board", board);
 	}
 
@@ -112,7 +128,7 @@ public class BoardController extends HttpServlet {
 		
 		/* View로 정보를 넘기기 위한 설정 */
 		request.setAttribute("num", num);
-		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("page", pageNum);
 		request.setAttribute("board", board);
 	}
 
@@ -150,7 +166,7 @@ public class BoardController extends HttpServlet {
 		/* 출력할 게시글의 초기화 작업 */
 		int pageNum = 1;/* 최초 페이지는 1Page로 설정 */
 		int limit = LISTCOUNT;/* 한 페이지당 출력 갯수 설정: 5 */
-		int segment = 3;
+		/* int segment = 3; */
 		/* PageList에서 해당 Page를 클릭했을 때 해당 Page가 넘어옴 */
 		if (request.getParameter("pageNum") != null) {
 			pageNum = Integer.parseInt(request.getParameter("pageNum"));
@@ -169,6 +185,18 @@ public class BoardController extends HttpServlet {
 		Math.floor(total_page);
 		total_page = (total_page % limit == 0) ? total_page : (total_page + 1);
 
+		/* segment 단위로 페이지 처리하기 */
+		int pageLength = 5,
+			currentBlock = (pageNum % pageLength == 0) ? (pageNum / pageLength) : (pageNum / pageLength + 1),
+			/* 현재 화면에 보여지는 Page의 첫째 Page번호 */
+			startPage = 1 + (currentBlock - 1) * pageLength, /* 1, 6 */
+			endPage = startPage + pageLength - 1, /* 5, 10 */
+			total_segment = (total_record % (limit * pageLength) == 0)
+							? (total_record / (limit * pageLength))
+							: (total_record / (limit * pageLength) + 1);
+		/* 글 조회 후 마지막 Page 보정 */
+		endPage = endPage > total_page ? total_page : endPage;
+		
 		/* 결과를 view에 전달하기 위해 request에 저장 */
 		request.setAttribute("pageNum", pageNum); /* 페이지 번호 */
 		request.setAttribute("total_page", total_page); /* 전체 페이지 수 */
@@ -177,6 +205,11 @@ public class BoardController extends HttpServlet {
 		/* 검색 조건 추가에 따른 조건, 검색내용 추가 전달 */
 		request.setAttribute("items", items);
 		request.setAttribute("text", text);
+		/*segment 처리 Parameter 설정*/
+		request.setAttribute("currentBlock", currentBlock);/* 현재 화면의 Block */
+		request.setAttribute("startPage", startPage);/* 현재 화면의 시작 Page */
+		request.setAttribute("endPage", endPage);/* 현재 화면의 끝 Page */
+		request.setAttribute("total_segment", total_segment);/* 전체 Block 수 */
 	}
 
 }

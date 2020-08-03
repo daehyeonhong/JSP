@@ -20,3 +20,4 @@ select*from board
 select count(*)from board where subject like'%5%';
 select*from board where subject like'%5%';
 select*from board order by num desc
+
