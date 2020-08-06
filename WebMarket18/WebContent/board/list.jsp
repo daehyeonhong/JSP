@@ -13,7 +13,7 @@ int total_record = (Integer) request.getAttribute("total_record"),
 		startPage = (Integer) request.getAttribute("startPage"),
 		endPage = (Integer) request.getAttribute("endPage"),
 		total_segment = (Integer) request.getAttribute("total_segment");
-String items = (String) request.getAttribute("items"),
+		String items = (String) request.getAttribute("items"),
 		text = (String) request.getAttribute("text");
 %>
 <!DOCTYPE html>
@@ -21,9 +21,7 @@ String items = (String) request.getAttribute("items"),
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>게시판</title>
 </head>
 <body>
@@ -85,24 +83,25 @@ String items = (String) request.getAttribute("items"),
 			<c:set var="startPage" value="<%=startPage%>" />
 			<c:set var="endPage" value="<%=endPage%>" />
 			<c:set var="total_segment" value="<%=total_segment%>" />
-			<div align="center">
-				<c:set var="pageNum" value="<%=pageNum%>" />
-				<ul class="pagination pagination-sm">
-				<%-- 이전 Segment_Block으로 이동 --%>
-					<c:if test="${currentBlock <= 1}">
-						<li class="previous disabled"><a href="#">Previous</a></li>
+			<c:set var="pageNum" value="<%=pageNum%>" />
+				<nav aria-label="Page navigation">
+				  <ul class="pagination justify-content-center">
+			  	<c:if test="${currentBlock <= 1}">
+				    <li class="page-item disabled">
+				    	<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a>
+				    </li>
 					</c:if>
 					<c:if test="${currentBlock > 1}">
-						<li class="previous">
-							<a href="./BoardListAction.do?pageNum=${startPage - 1}&items=${items}&text=${text}">Previous</a>
-						</li>
+				    <li class="page-item">
+				    	<a class="page-link" href="./BoardListAction.do?pageNum=${startPage - 1}&items=${items}&text=${text}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a>
+				    </li>
 					</c:if>
-					<%-- 현재 Segment_Block내에서의 Page List --%>
-					<c:forEach var="i" begin="${startPage}" end="${endPage}">
-						<li<c:if test="${pageNum == i}"> class = 'active'</c:if>>
-							<a href="<c:url value="./BoardListAction.do?pageNum=${i}&items=${items}&text=${text}" />">
+						<c:forEach var="i" begin="${startPage}" end="${endPage}">
+						<li class="page-item <c:if test="${pageNum == i}">active</c:if>">
+							<a class="page-link" href="<c:url value="./BoardListAction.do?pageNum=${i}&items=${items}&text=${text}" />">
 								<c:choose>
 									<c:when test="${pageNum == i}">
+										<span class="sr-only"></span>
 										<font color="#4C5317"><b>${i}</b></font>
 									</c:when>
 									<c:otherwise>
@@ -112,17 +111,20 @@ String items = (String) request.getAttribute("items"),
 							</a>
 						</li>
 					</c:forEach>
-					<%-- 다음 Segment_Block으로 이동 처리 --%>
 					<c:if test="${currentBlock < total_segment}">
-						<li class="next">
-							<a href="<c:url value="./BoardListAction.do?pageNum=${endPage + 1}&items=${items}&text=${text}" />">Next</a>
+						<li class="page-item">
+							<a class="page-link" href="<c:url value="./BoardListAction.do?pageNum=${endPage + 1}&items=${items}&text=${text}" />" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a>
 						</li>
 					</c:if>
 					<c:if test="${currentBlock >= total_segment}">
-						<li class="next disabled"><a href="#">Next</a></li>
+						<li class="page-item disabled">
+							<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a>
+						</li>
 					</c:if>
-				</ul>
-			</div>
+			  </ul>			  
+			</nav>
+			
+			
 			<%-- Page_Navaigation 끝. --%>
 			<%-- 검색 조건 --%>
 			<div class="container col-7">

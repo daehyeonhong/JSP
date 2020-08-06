@@ -183,7 +183,7 @@ public class BoardController extends HttpServlet {
 
 		total_page = total_record / limit;
 		Math.floor(total_page);
-		total_page = (total_page % limit == 0) ? total_page : (total_page + 1);
+		total_page = (total_record % limit == 0) ? total_page : (total_page + 1);
 
 		/* segment 단위로 페이지 처리하기 */
 		int pageLength = 5,
