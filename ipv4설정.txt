@@ -1,3 +1,0 @@
-Run -> RunConfigurations -> Apache Tomcat -> [Server_name] -> Arguments -> VM arguments
-
-:: -Djava.net.preferIPv4Stack=true::

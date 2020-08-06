@@ -1,5 +1,0 @@
-<role rolename="tomcat"/>
-  <role rolename="role1"/>
-  <user username="tomcat" password="tomcat1234" roles="tomcat"/>
-  <user username="both" password="both1234" roles="tomcat,role1"/>
-  <user username="role1" password="role1234" roles="role1"/>
