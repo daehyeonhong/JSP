@@ -6,6 +6,7 @@
 	int num = (Integer) request.getAttribute("num");
 	int nowPage = (Integer) request.getAttribute("page");
 %>
+<c:set var="userId" value="<%=board.getId()%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,6 @@
 	}
 </script>
 	<%@include file="../menu.jsp"%>
-	<c:set var="userId" value="<%=board.getId()%>"/>
 	<div class="jumbotron">
 		<div class="container">
 				<h1 class="display-3"><%=board.getSubject()%><c:if test="${sessionId==userId}">수정</c:if></h1>
