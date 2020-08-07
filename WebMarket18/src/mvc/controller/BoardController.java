@@ -81,8 +81,7 @@ public class BoardController extends HttpServlet {
 	/* 게시글 삭제 Method */
 	private void requestBoardDelete(HttpServletRequest request) {
 		/* Request로 넘어온 Parameter처리 */
-		int num = Integer.parseInt(request.getParameter("num")),
-			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		int num = Integer.parseInt(request.getParameter("num"));
 
 		/* DB에서 삭제 처리 */
 		BoardDAO dao = BoardDAO.getInstance();

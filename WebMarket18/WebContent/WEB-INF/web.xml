@@ -18,6 +18,9 @@
 			<description>권한관리</description>
 			<role-name>admin</role-name>
 		</auth-constraint>
+		<user-data-constraint>
+		<transport-guarantee>INTEGRAL</transport-guarantee>
+		</user-data-constraint>
 	</security-constraint>
 	<login-config>
 		<auth-method>FORM</auth-method>
@@ -30,7 +33,7 @@
 		<error-code>404</error-code>
 		<location>/exceptionNoPage.jsp</location>
 	</error-page>
-	
+
 	<servlet>
 		<servlet-name>BoardController</servlet-name>
 		<servlet-class>mvc.controller.BoardController</servlet-class>

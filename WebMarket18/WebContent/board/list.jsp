@@ -102,7 +102,7 @@ int total_record = (Integer) request.getAttribute("total_record"),
 								<c:choose>
 									<c:when test="${pageNum == i}">
 										<span class="sr-only"></span>
-										<font color="#4C5317"><b>${i}</b></font>
+										<font color="#FFF"><b>${i}</b></font>
 									</c:when>
 									<c:otherwise>
 										<font color="#4C5317">${i}</font>
@@ -127,23 +127,20 @@ int total_record = (Integer) request.getAttribute("total_record"),
 			
 			<%-- Page_Navaigation 끝. --%>
 			<%-- 검색 조건 --%>
-			<div class="container col-7">
-				<table>
-					<tr>
-						<td width="100%" align="left">&nbsp;&nbsp;
-							<select name="items" class="txt">
-								<option value="subject">제목에서</option>
-								<option value="content">내용에서</option>
-							</select>
-							<input type="text" name="text" />
-							<input type="submit" value="검색" id="btnAdd" class="btn btn-primary" />
-						</td>
-						<td width="100%" align="right">
-							<a href="#" onclick="checkForm();" class="btn btn-primary">&laquo;글쓰기</a>
-						</td>
-					</tr>
-				</table>
-			</div>
+
+			 <div class="input-group mt-3 mb-3 col-sm-5 mx-auto">
+	      <div class="input-group-prepend">
+	      	<select class="btn btn-light dropdown-toggle" data-toggle="dropdown" name="items">
+				 		<option value="subject">제목에서</option>
+				 		<option value="content">내용에서</option>
+			 		</select>
+	      </div>
+	      <input class="form-control" type="text" name="text" placeholder="Search" />
+	   		<div class="input-group-append">
+	      <input class="btn btn-primary" type="submit" value="검색" id="btnAdd">
+	     </div>
+	    </div>
+<a href="#" onclick="checkForm();" class="btn btn-primary">&laquo;글쓰기</a>
 			<%-- 검색조건 --%>
 		</form>
 		<hr />
