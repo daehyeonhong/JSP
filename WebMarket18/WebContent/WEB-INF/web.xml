@@ -18,9 +18,9 @@
 			<description>권한관리</description>
 			<role-name>admin</role-name>
 		</auth-constraint>
-		<user-data-constraint>
+		<!-- <user-data-constraint>
 		<transport-guarantee>INTEGRAL</transport-guarantee>
-		</user-data-constraint>
+		</user-data-constraint> -->
 	</security-constraint>
 	<login-config>
 		<auth-method>FORM</auth-method>

@@ -13,7 +13,7 @@ public class BoardUpdateAction implements Command {
 	@Override
 	public String command(HttpServletRequest request, HttpServletResponse response) {
 		requestBoardUpdate(request);
-		return "\"BoardListAction.do\"";
+		return "BoardListAction.do";
 	}
 
 	/* Update정보 DB에 저장 */
